@@ -16,7 +16,6 @@ export default function TaskCreate({
   setTaskList,
 }: Props) {
   const [taskName, setTaskName] = useState("");
-  console.log(taskName);
 
   return (
     <Transition.Root show={isCreateModalOpen} as={Fragment}>

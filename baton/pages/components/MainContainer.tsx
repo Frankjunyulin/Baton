@@ -47,9 +47,9 @@ const teams = [
 const tasks = [
   {
     id: 1,
-    title: "GraphQL API",
+    title: "SO Document Upload",
     initials: "GA",
-    team: "Engineering",
+    team: "Operation",
     assignees: [
       {
         name: "Dries Vincent",

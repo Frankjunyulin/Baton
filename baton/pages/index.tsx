@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import BaseLayout from "./components/BaseLayout";
 import MainContainer from "./components/MainContainer";
+import DetailContainer from "./components/DetailContainer";
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Manage your team's tasks" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainContainer />
+      {/* <MainContainer /> */}
+
+      <DetailContainer />
     </div>
   );
 };
