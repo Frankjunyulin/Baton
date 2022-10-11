@@ -14,9 +14,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Manage your team's tasks" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <MainContainer /> */}
+      <MainContainer />
 
-      <DetailContainer />
+      {/* <DetailContainer /> */}
     </div>
   );
 };

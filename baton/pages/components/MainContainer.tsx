@@ -14,6 +14,7 @@
 */
 import {Fragment, useState} from "react";
 import {Dialog, Menu, Transition} from "@headlessui/react";
+import Link from "next/link";
 import {
   Bars3CenterLeftIcon,
   Bars4Icon,
@@ -50,6 +51,7 @@ const tasks = [
     title: "SO Document Upload",
     initials: "GA",
     team: "Operation",
+    link: "/components/DetailContainer",
     assignees: [
       {
         name: "Dries Vincent",
@@ -684,12 +686,12 @@ export default function MainContainer() {
                     </div>
                     <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
                       <div className="flex-1 truncate px-4 py-2 text-sm">
-                        <a
-                          href="#"
+                        <Link
+                          href={task.link}
                           className="font-medium text-gray-900 hover:text-gray-600"
                         >
                           {task.title}
-                        </a>
+                        </Link>
                         <p className="text-gray-500">
                           {task.totalAssignees} Assignees
                         </p>
@@ -716,7 +718,7 @@ export default function MainContainer() {
                               <Menu.Item>
                                 {({active}) => (
                                   <a
-                                    href="#"
+                                    href={task.link}
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -852,8 +854,8 @@ export default function MainContainer() {
                               )}
                               aria-hidden="true"
                             />
-                            <a
-                              href="#"
+                            <Link
+                              href={task.link}
                               className="truncate hover:text-gray-600"
                             >
                               <span>
@@ -862,7 +864,7 @@ export default function MainContainer() {
                                   in {task.team}
                                 </span>
                               </span>
-                            </a>
+                            </Link>
                           </div>
                         </td>
                         <td className="px-6 py-3 text-sm font-medium text-gray-500">
