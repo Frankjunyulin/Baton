@@ -5,7 +5,9 @@ import {CheckIcon} from "@heroicons/react/24/outline";
 type Props = {
   isCreateModalOpen: boolean;
   setCreateModalOpen: (val: boolean) => void;
+  // @ts-ignore: Unreachable code error
   taskList: Any;
+  // @ts-ignore: Unreachable code error
   setTaskList: (val: list<Any>) => void;
 };
 
@@ -18,8 +20,14 @@ export default function TaskCreate({
   const [taskName, setTaskName] = useState("");
 
   return (
-    <Transition.Root show={isCreateModalOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setCreateModalOpen}>
+    <Transition.Root show={true} as={Fragment}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => {
+          setCreateModalOpen(false);
+        }}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -29,7 +37,9 @@ export default function TaskCreate({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
+            {" "}
+          </div>
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">

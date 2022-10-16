@@ -47,6 +47,7 @@ import {
   BookOpenIcon,
   UserCircleIcon as UserCircleIconMini,
 } from "@heroicons/react/20/solid";
+import ProcedureFlow from "./ProcedureFlow";
 
 const navigation = [
   {name: "Tasks", href: "#", icon: HomeIcon, current: true},
@@ -106,7 +107,7 @@ const activity = [
   },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -717,6 +718,8 @@ export default function DetailContainer() {
                         </div>
                         <div className="pt-6">
                           {/* Activity feed*/}
+                          <ProcedureFlow />
+                          {/*
                           <div className="flow-root">
                             <ul role="list" className="-mb-8">
                               {activity.map((item, itemIdx) => (
@@ -913,7 +916,7 @@ export default function DetailContainer() {
                                 </form>
                               </div>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

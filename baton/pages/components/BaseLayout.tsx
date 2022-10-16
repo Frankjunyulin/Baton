@@ -1,7 +1,6 @@
 import React, { useRef, type ReactNode } from 'react';
 import Image from 'next/image';
 import logo from 'assets/logo.svg';
-import Toaster from 'components/common/Toaster/Toaster';
 
 type Props = {
   children?: ReactNode;
