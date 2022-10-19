@@ -48,6 +48,7 @@ import {
   UserCircleIcon as UserCircleIconMini,
 } from "@heroicons/react/20/solid";
 import ProcedureFlow from "./ProcedureFlow";
+import StepSlideOver from "./StepSlideOver";
 
 const navigation = [
   {name: "Tasks", href: "#", icon: HomeIcon, current: true},
@@ -116,6 +117,7 @@ export default function DetailContainer() {
 
   return (
     <>
+      {<StepSlideOver />}
       {/*
         This example requires updating your template:
 
@@ -713,7 +715,7 @@ export default function DetailContainer() {
                             id="activity-title"
                             className="text-lg font-medium text-gray-900"
                           >
-                            Activity
+                            Steps
                           </h2>
                         </div>
                         <div className="pt-6">
