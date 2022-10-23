@@ -59,12 +59,26 @@ const team = [
   },
 ];
 
-export default function StepSlideOver() {
+type Props = {
+  selectedStep: any;
+  setSelectedStep: (val: any) => void;
+};
+
+export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
   const [open, setOpen] = useState(true);
 
+  // console.log(selectedStep);
+
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+    <Transition.Root show={selectedStep != null} as={Fragment}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => {
+          setSelectedStep(null);
+          // console.log(selectedStep);
+        }}
+      >
         <div className="fixed inset-0" />
 
         <div className="fixed inset-0 overflow-hidden">
@@ -91,7 +105,10 @@ export default function StepSlideOver() {
                             <button
                               type="button"
                               className="rounded-md bg-indigo-700 text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                              onClick={() => setOpen(false)}
+                              onClick={() => {
+                                setSelectedStep(null);
+                                // console.log(selectedStep);
+                              }}
                             >
                               <span className="sr-only">Close panel</span>
                               <XMarkIcon
@@ -304,7 +321,10 @@ export default function StepSlideOver() {
                       <button
                         type="button"
                         className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        onClick={() => setOpen(false)}
+                        onClick={() => {
+                          setSelectedStep(null);
+                          // console.log(selectedStep);
+                        }}
                       >
                         Cancel
                       </button>

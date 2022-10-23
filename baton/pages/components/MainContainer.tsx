@@ -34,18 +34,6 @@ import {
 import TaskCreate from "./TaskCreate";
 import TransitionBar from "./TransitionBar";
 
-const navigation = [
-  {name: "Tasks", href: "#", icon: HomeIcon, current: true},
-  {name: "Backlog", href: "#", icon: FolderIcon, current: false},
-  {name: "My tasks", href: "#", icon: BookOpenIcon, current: false},
-  {name: "Components", href: "#", icon: CalendarIcon, current: false},
-];
-
-const teams = [
-  {name: "Engineering", href: "#", bgColorClass: "bg-indigo-500"},
-  {name: "Human Resources", href: "#", bgColorClass: "bg-green-500"},
-  {name: "Customer Success", href: "#", bgColorClass: "bg-yellow-500"},
-];
 const tasks = [
   {
     id: 1,

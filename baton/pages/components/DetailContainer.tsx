@@ -47,28 +47,19 @@ import {
   BookOpenIcon,
   UserCircleIcon as UserCircleIconMini,
 } from "@heroicons/react/20/solid";
+import ReactFlow, {
+  MiniMap,
+  Controls,
+  Background,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+} from "reactflow";
 import ProcedureFlow from "./ProcedureFlow";
 import StepSlideOver from "./StepSlideOver";
 import TransitionBar from "./TransitionBar";
 
-const navigation = [
-  {name: "Tasks", href: "#", icon: HomeIcon, current: true},
-  {name: "Backlog", href: "#", icon: FolderIcon, current: false},
-  {name: "My tasks", href: "#", icon: BookOpenIcon, current: false},
-  {name: "Components", href: "#", icon: CalendarIcon, current: false},
-];
-
-const teams = [
-  {name: "Engineering", href: "#", bgColorClass: "bg-indigo-500"},
-  {name: "Human Resources", href: "#", bgColorClass: "bg-green-500"},
-  {name: "Customer Success", href: "#", bgColorClass: "bg-yellow-500"},
-];
-const projects = [
-  {id: 1, name: "GraphQL API", href: "#"},
-  {id: 2, name: "iOS App", href: "#"},
-  {id: 3, name: "Marketing Site Redesign", href: "#"},
-  {id: 4, name: "Customer Portal", href: "#"},
-];
+/*
 const activity = [
   {
     id: 1,
@@ -108,13 +99,78 @@ const activity = [
     date: "2h ago",
   },
 ];
+*/
+
+const steps = [
+  {
+    id: "1",
+    title: "SO Document Upload",
+    initials: "GA",
+    team: "Operation",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "March 17, 2020",
+  },
+  {
+    id: "2",
+    title: "Create Microsoft",
+    initials: "GA",
+    team: "Engineering",
+    assignees: [
+      {
+        name: "Bill Gates",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "March 17, 2020",
+  },
+];
+
+const initialNodes = [
+  {id: "1", position: {x: 0, y: 0}, data: {label: "Input Node"}},
+  {id: "2", position: {x: 0, y: 100}, data: {label: "output Node"}},
+];
+
+const initialEdges = [{id: "e1-2", source: "1", target: "2"}];
 
 export default function DetailContainer() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedStep, setSelectedStep] = useState(null);
+  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  console.log("*************");
+  console.log(selectedStep);
+  console.log("*************");
+  /*
+  const selectedNodes = nodes.filter((node) => node.selected === true);
+  if (selectedNodes.length > 0) {
+    const selectedsteps = steps.filter(
+      (step) => step.id === selectedNodes[0].id
+    );
+    if (selectedsteps.length > 0) {
+      setSelectedStep(selectedsteps[0]);
+    }
+  }
+  */
   return (
     <>
-      {<StepSlideOver />}
+      {selectedStep && (
+        <StepSlideOver
+          selectedStep={selectedStep}
+          setSelectedStep={setSelectedStep}
+        />
+      )}
       {/*
         This example requires updating your template:
 
@@ -217,7 +273,7 @@ export default function DetailContainer() {
                           </button>
                         </div>
                       </div>
-                      <aside className="mt-8 xl:hidden">
+                      {/*<aside className="mt-8 xl:hidden">
                         <h2 className="sr-only">Details</h2>
                         <div className="space-y-5">
                           <div className="flex items-center space-x-2">
@@ -314,7 +370,7 @@ export default function DetailContainer() {
                             </ul>
                           </div>
                         </div>
-                      </aside>
+                      </aside> */}
                       <div className="py-3 xl:pt-6 xl:pb-0">
                         <h2 className="sr-only">Description</h2>
                         <div className="prose max-w-none">
@@ -362,7 +418,10 @@ export default function DetailContainer() {
                         </div>
                         <div className="pt-6">
                           {/* Activity feed*/}
-                          <ProcedureFlow />
+                          <ProcedureFlow
+                            steps={steps}
+                            setSelectedStep={setSelectedStep}
+                          />
                           {/*
                           <div className="flow-root">
                             <ul role="list" className="-mb-8">
