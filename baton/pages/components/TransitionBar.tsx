@@ -18,9 +18,9 @@ import {
 } from "@heroicons/react/20/solid";
 
 const navigation = [
-  {name: "Tasks", href: "#", icon: HomeIcon, current: true},
+  {name: "Procedures", href: "#", icon: HomeIcon, current: true},
   {name: "Backlog", href: "#", icon: FolderIcon, current: false},
-  {name: "My tasks", href: "#", icon: BookOpenIcon, current: false},
+  {name: "My procedures", href: "#", icon: BookOpenIcon, current: false},
   {name: "Components", href: "#", icon: CalendarIcon, current: false},
 ];
 

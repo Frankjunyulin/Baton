@@ -34,7 +34,7 @@ import {
 import TaskCreate from "./TaskCreate";
 import TransitionBar from "./TransitionBar";
 
-const tasks = [
+const procedures = [
   {
     id: 1,
     title: "SO Document Upload",
@@ -72,9 +72,9 @@ const tasks = [
     pinned: true,
     bgColorClass: "bg-pink-600",
   },
-  // More tasks...
+  // More procedures...
 ];
-const pinnedTasks = tasks.filter((task) => task.pinned);
+const pinnedProcedures = procedures.filter((procedure) => procedure.pinned);
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -83,7 +83,7 @@ function classNames(...classes: string[]) {
 export default function MainContainer() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCreateModalOpen, setCreateModalOpen] = useState(false);
-  const [taskList, setTaskList] = useState(tasks);
+  const [procedureList, setProcedureList] = useState(procedures);
 
   return (
     <>
@@ -91,8 +91,8 @@ export default function MainContainer() {
         <TaskCreate
           isCreateModalOpen={isCreateModalOpen}
           setCreateModalOpen={setCreateModalOpen}
-          taskList={taskList}
-          setTaskList={setTaskList}
+          taskList={procedureList}
+          setTaskList={setProcedureList}
         />
       )}
       {/*
@@ -294,41 +294,41 @@ export default function MainContainer() {
                 </button>
               </div>
             </div>
-            {/* Pinned tasks */}
+            {/* Pinned procedures */}
             <div className="mt-6 px-4 sm:px-6 lg:px-8">
               <h2 className="text-sm font-medium text-gray-900">
-                Pinned Tasks
+                Pinned Procedures
               </h2>
               <ul
                 role="list"
                 className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4"
               >
-                {pinnedTasks.map((task) => (
+                {pinnedProcedures.map((procedure) => (
                   <li
-                    key={task.id}
+                    key={procedure.id}
                     className="relative col-span-1 flex rounded-md shadow-sm"
                   >
                     <div
                       className={classNames(
-                        task.bgColorClass,
+                        procedure.bgColorClass,
                         "flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md"
                       )}
                     >
-                      {task.initials}
+                      {procedure.initials}
                     </div>
                     <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
                       <div className="flex-1 truncate px-4 py-2 text-sm">
                         <Link
                           href={{
                             pathname: "/components/DetailContainer",
-                            query: {id: task.id},
+                            query: {id: procedure.id},
                           }}
                           className="font-medium text-gray-900 hover:text-gray-600"
                         >
-                          {task.title}
+                          {procedure.title}
                         </Link>
                         <p className="text-gray-500">
-                          {task.totalAssignees} Assignees
+                          {procedure.totalAssignees} Assignees
                         </p>
                       </div>
                       <Menu as="div" className="flex-shrink-0 pr-2">
@@ -353,7 +353,7 @@ export default function MainContainer() {
                               <Menu.Item>
                                 {({active}) => (
                                   <a
-                                    href={task.link}
+                                    href={procedure.link}
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -407,17 +407,19 @@ export default function MainContainer() {
               </ul>
             </div>
 
-            {/* Tasks list (only on smallest breakpoint) */}
+            {/* Procedures list (only on smallest breakpoint) */}
             <div className="mt-10 sm:hidden">
               <div className="px-4 sm:px-6">
-                <h2 className="text-sm font-medium text-gray-900">Tasks</h2>
+                <h2 className="text-sm font-medium text-gray-900">
+                  Procedures
+                </h2>
               </div>
               <ul
                 role="list"
                 className="mt-3 divide-y divide-gray-100 border-t border-gray-200"
               >
-                {taskList.map((task) => (
-                  <li key={task.id}>
+                {procedureList.map((procedure) => (
+                  <li key={procedure.id}>
                     <a
                       href="#"
                       className="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6"
@@ -425,15 +427,15 @@ export default function MainContainer() {
                       <span className="flex items-center space-x-3 truncate">
                         <span
                           className={classNames(
-                            task.bgColorClass,
+                            procedure.bgColorClass,
                             "w-2.5 h-2.5 flex-shrink-0 rounded-full"
                           )}
                           aria-hidden="true"
                         />
                         <span className="truncate text-sm font-medium leading-6">
-                          {task.title}{" "}
+                          {procedure.title}{" "}
                           <span className="truncate font-normal text-gray-500">
-                            in {task.team}
+                            in {procedure.team}
                           </span>
                         </span>
                       </span>
@@ -447,7 +449,7 @@ export default function MainContainer() {
               </ul>
             </div>
 
-            {/* Tasks table (small breakpoint and up) */}
+            {/* Procedures table (small breakpoint and up) */}
             <div className="mt-8 hidden sm:block">
               <div className="inline-block min-w-full border-b border-gray-200 align-middle">
                 <table className="min-w-full">
@@ -457,7 +459,7 @@ export default function MainContainer() {
                         className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                         scope="col"
                       >
-                        <span className="lg:pl-2">Task</span>
+                        <span className="lg:pl-2">Procedure</span>
                       </th>
                       <th
                         className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
@@ -478,13 +480,13 @@ export default function MainContainer() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 bg-white">
-                    {taskList.map((task) => (
-                      <tr key={task.id}>
+                    {procedureList.map((procedure) => (
+                      <tr key={procedure.id}>
                         <td className="w-full max-w-0 whitespace-nowrap px-6 py-3 text-sm font-medium text-gray-900">
                           <div className="flex items-center space-x-3 lg:pl-2">
                             <div
                               className={classNames(
-                                task.bgColorClass,
+                                procedure.bgColorClass,
                                 "flex-shrink-0 w-2.5 h-2.5 rounded-full"
                               )}
                               aria-hidden="true"
@@ -492,14 +494,14 @@ export default function MainContainer() {
                             <Link
                               href={{
                                 pathname: "/components/DetailContainer",
-                                query: {id: task.id},
+                                query: {id: procedure.id},
                               }}
                               className="font-medium text-gray-900 hover:text-gray-600"
                             >
                               <span>
-                                {task.title}{" "}
+                                {procedure.title}{" "}
                                 <span className="font-normal text-gray-500">
-                                  in {task.team}
+                                  in {procedure.team}
                                 </span>
                               </span>
                             </Link>
@@ -508,7 +510,7 @@ export default function MainContainer() {
                         <td className="px-6 py-3 text-sm font-medium text-gray-500">
                           <div className="flex items-center space-x-2">
                             <div className="flex flex-shrink-0 -space-x-1">
-                              {task.assignees.map((assignee) => (
+                              {procedure.assignees.map((assignee) => (
                                 <img
                                   key={assignee.handle}
                                   className="h-6 w-6 max-w-none rounded-full ring-2 ring-white"
@@ -517,15 +519,18 @@ export default function MainContainer() {
                                 />
                               ))}
                             </div>
-                            {task.totalAssignees > task.assignees.length ? (
+                            {procedure.totalAssignees >
+                            procedure.assignees.length ? (
                               <span className="flex-shrink-0 text-xs font-medium leading-5">
-                                +{task.totalAssignees - task.assignees.length}
+                                +
+                                {procedure.totalAssignees -
+                                  procedure.assignees.length}
                               </span>
                             ) : null}
                           </div>
                         </td>
                         <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
-                          {task.lastUpdated}
+                          {procedure.lastUpdated}
                         </td>
                         <td className="whitespace-nowrap px-6 py-3 text-right text-sm font-medium">
                           <a

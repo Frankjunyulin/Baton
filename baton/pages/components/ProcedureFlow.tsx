@@ -6,15 +6,25 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   addEdge,
+  MarkerType,
 } from "reactflow";
 import "reactflow/dist/style.css";
 
 const initialNodes = [
-  {id: "1", position: {x: 0, y: 0}, data: {label: "Input Node"}},
-  {id: "2", position: {x: 0, y: 100}, data: {label: "output Node"}},
+  {id: "1", position: {x: 200, y: 0}, data: {label: "Step 1"}},
+  {id: "2", position: {x: 200, y: 100}, data: {label: "Step 2"}},
 ];
 
-const initialEdges = [{id: "e1-2", source: "1", target: "2"}];
+const initialEdges = [
+  {
+    id: "e1-2",
+    source: "1",
+    target: "2",
+    markerEnd: {
+      type: MarkerType.Arrow,
+    },
+  },
+];
 
 type Props = {
   steps: any;
@@ -47,8 +57,26 @@ export default function ProcedureFlow({steps, setSelectedStep}: Props) {
     [setEdges]
   );
 
+  /*
+  const reactFlowInstance = useReactFlow();
+  const onClick = useCallback(() => {
+    const id = `${++nodeId}`;
+    const newNode = {
+      id,
+      position: {
+        x: Math.random() * 500,
+        y: Math.random() * 500,
+      },
+      data: {
+        label: `Node ${id}`,
+      },
+    };
+    reactFlowInstance.addNodes(newNode);
+  }, []);
+  */
+
   return (
-    <div style={{height: 800}}>
+    <div style={{height: 400}}>
       <ReactFlow
         nodes={nodes}
         edges={edges}

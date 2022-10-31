@@ -55,7 +55,10 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
 } from "reactflow";
+
+import Breadcrumbs from "./Breadcrumbs";
 import ProcedureFlow from "./ProcedureFlow";
+import StepDropdown from "./StepDropdown";
 import StepSlideOver from "./StepSlideOver";
 import TransitionBar from "./TransitionBar";
 
@@ -101,7 +104,7 @@ const activity = [
 ];
 */
 
-const steps = [
+const tasks = [
   {
     id: "1",
     title: "SO Document Upload",
@@ -196,34 +199,7 @@ export default function DetailContainer() {
             </button>
             <div className="flex flex-1 justify-between px-4">
               <div className="flex flex-1">
-                <form className="flex w-full lg:ml-0" action="#" method="GET">
-                  <label htmlFor="search-field" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
-                      <MagnifyingGlassIcon
-                        className="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <input
-                      id="search-field"
-                      className="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
-                      placeholder="Search"
-                      type="search"
-                      name="search"
-                    />
-                  </div>
-                </form>
-              </div>
-              <div className="ml-4 flex items-center lg:ml-6">
-                <button
-                  type="button"
-                  className="inline-flex items-center rounded-md border border-transparent bg-rose-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-                >
-                  Save
-                </button>
+                <Breadcrumbs />
               </div>
             </div>
           </div>
@@ -408,18 +384,21 @@ export default function DetailContainer() {
                   >
                     <div>
                       <div className="divide-y divide-gray-200">
-                        <div className="pb-4">
-                          <h2
-                            id="activity-title"
-                            className="text-lg font-medium text-gray-900"
-                          >
-                            Steps
-                          </h2>
+                        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6">
+                          <div className="pb-4">
+                            <h2
+                              id="activity-title"
+                              className="text-lg font-medium text-gray-900"
+                            >
+                              Tasks
+                            </h2>
+                          </div>
+                          <StepDropdown />
                         </div>
                         <div className="pt-6">
                           {/* Activity feed*/}
                           <ProcedureFlow
-                            steps={steps}
+                            steps={tasks}
                             setSelectedStep={setSelectedStep}
                           />
                           {/*

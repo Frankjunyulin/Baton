@@ -96,53 +96,16 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <form className="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl">
                     <div className="h-0 flex-1 overflow-y-auto">
-                      <div className="bg-indigo-700 py-6 px-4 sm:px-6">
-                        <div className="flex items-center justify-between">
-                          <Dialog.Title className="text-lg font-medium text-white">
-                            New Project
-                          </Dialog.Title>
-                          <div className="ml-3 flex h-7 items-center">
-                            <button
-                              type="button"
-                              className="rounded-md bg-indigo-700 text-indigo-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                              onClick={() => {
-                                setSelectedStep(null);
-                                // console.log(selectedStep);
-                              }}
-                            >
-                              <span className="sr-only">Close panel</span>
-                              <XMarkIcon
-                                className="h-6 w-6"
-                                aria-hidden="true"
-                              />
-                            </button>
-                          </div>
-                        </div>
-                        <div className="mt-1">
-                          <p className="text-sm text-indigo-300">
-                            Get started by filling in the information below to
-                            create your new project.
-                          </p>
-                        </div>
-                      </div>
                       <div className="flex flex-1 flex-col justify-between">
                         <div className="divide-y divide-gray-200 px-4 sm:px-6">
                           <div className="space-y-6 pt-6 pb-5">
                             <div>
-                              <label
-                                htmlFor="project-name"
-                                className="block text-sm font-medium text-gray-900"
+                              <h1
+                                id="slide-over-heading"
+                                className="text-lg font-medium text-gray-900"
                               >
-                                Step name
-                              </label>
-                              <div className="mt-1">
-                                <input
-                                  type="text"
-                                  name="project-name"
-                                  id="project-name"
-                                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                />
-                              </div>
+                                Step 1
+                              </h1>
                             </div>
                             <div>
                               <label
@@ -157,13 +120,15 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                   name="description"
                                   rows={4}
                                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                  defaultValue={""}
+                                  defaultValue={
+                                    "Step 1 is the first step of this task. It is also the starting point of this procedure."
+                                  }
                                 />
                               </div>
                             </div>
                             <div>
                               <h3 className="text-sm font-medium text-gray-900">
-                                Team Members
+                                Assignees
                               </h3>
                               <div className="mt-2">
                                 <div className="flex space-x-2">
@@ -197,7 +162,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                             </div>
                             <fieldset>
                               <legend className="text-sm font-medium text-gray-900">
-                                Check points
+                                Acceptance Criteria
                               </legend>
                               <div className="mt-2 space-y-5">
                                 <div className="relative flex items-start">
@@ -206,7 +171,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                       id="privacy-public"
                                       name="privacy"
                                       aria-describedby="privacy-public-description"
-                                      type="radio"
+                                      type="checkbox"
                                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                       defaultChecked
                                     />
@@ -234,7 +199,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                         id="privacy-private-to-project"
                                         name="privacy"
                                         aria-describedby="privacy-private-to-project-description"
-                                        type="radio"
+                                        type="checkbox"
                                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                       />
                                     </div>
@@ -262,7 +227,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                         id="privacy-private"
                                         name="privacy"
                                         aria-describedby="privacy-private-to-project-description"
-                                        type="radio"
+                                        type="checkbox"
                                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                       />
                                     </div>
