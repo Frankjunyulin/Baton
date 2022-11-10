@@ -6,16 +6,16 @@ type Props = {
   isCreateModalOpen: boolean;
   setCreateModalOpen: (val: boolean) => void;
   // @ts-ignore: Unreachable code error
-  taskList: Any;
+  procedureList: Any;
   // @ts-ignore: Unreachable code error
-  setTaskList: (val: list<Any>) => void;
+  setProcedureList: (val: list<Any>) => void;
 };
 
-export default function TaskCreate({
+export default function ProcedureCreate({
   isCreateModalOpen,
   setCreateModalOpen,
-  taskList,
-  setTaskList,
+  procedureList,
+  setProcedureList,
 }: Props) {
   const [taskName, setTaskName] = useState("");
 
@@ -81,10 +81,11 @@ export default function TaskCreate({
                         className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
                         onClick={() => {
                           setCreateModalOpen(false);
-                          setTaskList([
-                            ...taskList,
+                          setProcedureList([
+                            ...procedureList,
                             {
-                              id: taskList[taskList.length - 1].id + 1,
+                              id:
+                                procedureList[procedureList.length - 1].id + 1,
                               title: taskName,
                               initials: "GA",
                               team: "Engineering",

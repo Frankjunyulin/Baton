@@ -13,8 +13,10 @@
   ```
 */
 import {Fragment, useState} from "react";
+import Link from "next/link";
 import {Dialog, Transition} from "@headlessui/react";
 import {XMarkIcon} from "@heroicons/react/24/outline";
+
 import {
   LinkIcon,
   PlusIcon,
@@ -177,12 +179,20 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                     />
                                   </div>
                                   <div className="pl-7 text-sm">
-                                    <label
-                                      htmlFor="privacy-public"
-                                      className="font-medium text-gray-900"
+                                    <Link
+                                      href={{
+                                        pathname: "/components/TaskContainer",
+                                        query: {id: 1},
+                                      }}
+                                      className="font-medium text-gray-900 hover:text-gray-600"
                                     >
-                                      Public access
-                                    </label>
+                                      <label
+                                        htmlFor="privacy-public"
+                                        className="font-medium text-gray-900"
+                                      >
+                                        Public access
+                                      </label>
+                                    </Link>
                                     <p
                                       id="privacy-public-description"
                                       className="text-gray-500"

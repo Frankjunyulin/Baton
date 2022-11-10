@@ -1,12 +1,14 @@
+import {Fragment, useState} from "react";
 import type {NextPage} from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import BaseLayout from "./components/BaseLayout";
 import MainContainer from "./components/MainContainer";
-import DetailContainer from "./components/DetailContainer";
 
 const Home: NextPage = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div>
       <Head>
@@ -15,8 +17,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainContainer />
-
-      {/* <DetailContainer /> */}
     </div>
   );
 };
