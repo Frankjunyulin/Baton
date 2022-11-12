@@ -1,29 +1,9 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  const colors = require('tailwindcss/colors')
-  
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        colors: {
-          rose: colors.rose,
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-      require('@tailwindcss/typography'),
-    ],
-  }
-  ```
-*/
 import {Fragment, useState} from "react";
-import {Dialog, Menu, Transition} from "@headlessui/react";
+import {Dialog, Transition} from "@headlessui/react";
+import TransitionBar from "./TransitionBar";
+import Breadcrumbs from "./Breadcrumbs";
+import Link from "next/link";
+
 import {
   ArchiveBoxIcon,
   Bars3BottomLeftIcon,
@@ -32,7 +12,6 @@ import {
   HomeIcon,
   UserCircleIcon as UserCircleIconOutline,
   XMarkIcon,
-  ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
 import {
   BellIcon,
@@ -43,26 +22,22 @@ import {
   MagnifyingGlassIcon,
   PencilIcon,
   TagIcon,
-  FolderIcon,
-  BookOpenIcon,
   UserCircleIcon as UserCircleIconMini,
 } from "@heroicons/react/20/solid";
-import ReactFlow, {
-  MiniMap,
-  Controls,
-  Background,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-} from "reactflow";
 
-import Breadcrumbs from "./Breadcrumbs";
-import ProcedureFlow from "./ProcedureFlow";
-import StepDropdown from "./StepDropdown";
-import StepSlideOver from "./StepSlideOver";
-import TransitionBar from "./TransitionBar";
-
-/*
+const navigation = [
+  {name: "All Issues", href: "#", icon: HomeIcon, current: true},
+  {name: "My Issues", href: "#", icon: Bars4Icon, current: false},
+  {name: "Assigned", href: "#", icon: UserCircleIconOutline, current: false},
+  {name: "Closed", href: "#", icon: ArchiveBoxIcon, current: false},
+  {name: "Recent", href: "#", icon: ClockIcon, current: false},
+];
+const projects = [
+  {id: 1, name: "GraphQL API", href: "#"},
+  {id: 2, name: "iOS App", href: "#"},
+  {id: 3, name: "Marketing Site Redesign", href: "#"},
+  {id: 4, name: "Customer Portal", href: "#"},
+];
 const activity = [
   {
     id: 1,
@@ -102,87 +77,31 @@ const activity = [
     date: "2h ago",
   },
 ];
-*/
 
-const tasks = [
+const breadTags = [
+  {name: "Procedures", href: "/components/ProcedureContainer", current: false},
   {
-    id: "1",
-    title: "SO Document Upload",
-    initials: "GA",
-    team: "Operation",
-    assignees: [
-      {
-        name: "Dries Vincent",
-        handle: "driesvincent",
-        imageUrl:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-      },
-    ],
-    totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
+    name: "Upload and digitize SO",
+    href: {
+      pathname: "/components/ProcedureDetails",
+      query: {},
+    },
+    current: false,
   },
-  {
-    id: "2",
-    title: "Create Microsoft",
-    initials: "GA",
-    team: "Engineering",
-    assignees: [
-      {
-        name: "Bill Gates",
-        handle: "driesvincent",
-        imageUrl:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-      },
-    ],
-    totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
-  },
+  {name: "Download SO document", current: false},
 ];
 
-const initialNodes = [
-  {id: "1", position: {x: 0, y: 0}, data: {label: "Input Node"}},
-  {id: "2", position: {x: 0, y: 100}, data: {label: "output Node"}},
-];
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
-const initialEdges = [{id: "e1-2", source: "1", target: "2"}];
-
-export default function DetailContainer() {
+export default function TaskDetails() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selectedStep, setSelectedStep] = useState(null);
-  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  console.log("*************");
-  console.log(selectedStep);
-  console.log("*************");
-  /*
-  const selectedNodes = nodes.filter((node) => node.selected === true);
-  if (selectedNodes.length > 0) {
-    const selectedsteps = steps.filter(
-      (step) => step.id === selectedNodes[0].id
-    );
-    if (selectedsteps.length > 0) {
-      setSelectedStep(selectedsteps[0]);
-    }
-  }
-  */
   return (
     <>
-      {selectedStep && (
-        <StepSlideOver
-          selectedStep={selectedStep}
-          setSelectedStep={setSelectedStep}
-        />
-      )}
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
       <div className="flex min-h-full">
+        {/* Static sidebar for desktop */}
         <TransitionBar
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
@@ -199,7 +118,7 @@ export default function DetailContainer() {
             </button>
             <div className="flex flex-1 justify-between px-4">
               <div className="flex flex-1">
-                <Breadcrumbs />
+                <Breadcrumbs breadTags={breadTags} />
               </div>
             </div>
           </div>
@@ -213,7 +132,7 @@ export default function DetailContainer() {
                       <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6">
                         <div>
                           <h1 className="text-2xl font-bold text-gray-900">
-                            ARIA attribute misspelled
+                            Download SO document
                           </h1>
                           <p className="mt-2 text-sm text-gray-500">
                             #400 opened by{" "}
@@ -249,7 +168,7 @@ export default function DetailContainer() {
                           </button>
                         </div>
                       </div>
-                      {/*<aside className="mt-8 xl:hidden">
+                      <aside className="mt-8 xl:hidden">
                         <h2 className="sr-only">Details</h2>
                         <div className="space-y-5">
                           <div className="flex items-center space-x-2">
@@ -258,7 +177,7 @@ export default function DetailContainer() {
                               aria-hidden="true"
                             />
                             <span className="text-sm font-medium text-green-700">
-                              Open Issue
+                              Required from trigger
                             </span>
                           </div>
                           <div className="flex items-center space-x-2">
@@ -346,7 +265,7 @@ export default function DetailContainer() {
                             </ul>
                           </div>
                         </div>
-                      </aside> */}
+                      </aside>
                       <div className="py-3 xl:pt-6 xl:pb-0">
                         <h2 className="sr-only">Description</h2>
                         <div className="prose max-w-none">
@@ -384,24 +303,16 @@ export default function DetailContainer() {
                   >
                     <div>
                       <div className="divide-y divide-gray-200">
-                        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6">
-                          <div className="pb-4">
-                            <h2
-                              id="activity-title"
-                              className="text-lg font-medium text-gray-900"
-                            >
-                              Milestones
-                            </h2>
-                          </div>
-                          <StepDropdown />
+                        <div className="pb-4">
+                          <h2
+                            id="activity-title"
+                            className="text-lg font-medium text-gray-900"
+                          >
+                            Activity
+                          </h2>
                         </div>
                         <div className="pt-6">
                           {/* Activity feed*/}
-                          <ProcedureFlow
-                            steps={tasks}
-                            setSelectedStep={setSelectedStep}
-                          />
-                          {/*
                           <div className="flow-root">
                             <ul role="list" className="-mb-8">
                               {activity.map((item, itemIdx) => (
@@ -598,14 +509,13 @@ export default function DetailContainer() {
                                 </form>
                               </div>
                             </div>
-                          </div> */}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </section>
                 </div>
-                {/* The right bar */}
-                {/*<aside className="hidden xl:block xl:pl-8">
+                <aside className="hidden xl:block xl:pl-8">
                   <h2 className="sr-only">Details</h2>
                   <div className="space-y-5">
                     <div className="flex items-center space-x-2">
@@ -614,7 +524,7 @@ export default function DetailContainer() {
                         aria-hidden="true"
                       />
                       <span className="text-sm font-medium text-green-700">
-                        Open Issue
+                        Required from trigger
                       </span>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -640,7 +550,29 @@ export default function DetailContainer() {
                   <div className="mt-6 space-y-8 border-t border-gray-200 py-6">
                     <div>
                       <h2 className="text-sm font-medium text-gray-500">
-                        Owner
+                        Procedure
+                      </h2>
+                      <Link
+                        href={{
+                          pathname: "/components/ProcedureDetails",
+                          query: {},
+                        }}
+                        className="font-medium text-gray-900 hover:text-gray-600"
+                      >
+                        Upload and digitize SO
+                      </Link>
+                    </div>
+                    <div>
+                      <h2 className="text-sm font-medium text-gray-500">
+                        Milestone
+                      </h2>
+                      <div className="text-sm font-medium text-gray-900 mt-3">
+                        Extract SO number
+                      </div>
+                    </div>
+                    <div>
+                      <h2 className="text-sm font-medium text-gray-500">
+                        Assignees
                       </h2>
                       <ul role="list" className="mt-3 space-y-3">
                         <li className="flex justify-start">
@@ -699,7 +631,7 @@ export default function DetailContainer() {
                       </ul>
                     </div>
                   </div>
-                </aside> */}
+                </aside>
               </div>
             </div>
           </main>

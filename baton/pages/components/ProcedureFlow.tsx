@@ -11,8 +11,22 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 
 const initialNodes = [
-  {id: "1", position: {x: 200, y: 0}, data: {label: "Step 1"}},
-  {id: "2", position: {x: 200, y: 100}, data: {label: "Step 2"}},
+  {
+    id: "1",
+    position: {x: 200, y: 0},
+    data: {label: "Extract SO number"},
+  },
+  {
+    id: "2",
+    position: {x: 200, y: 100},
+    data: {label: "Find shipment"},
+  },
+  {id: "3", position: {x: 200, y: 200}, data: {label: "Digitize SO"}},
+  {
+    id: "4",
+    position: {x: 200, y: 300},
+    data: {label: "Eelease SO"},
+  },
 ];
 
 const initialEdges = [
@@ -20,6 +34,22 @@ const initialEdges = [
     id: "e1-2",
     source: "1",
     target: "2",
+    markerEnd: {
+      type: MarkerType.Arrow,
+    },
+  },
+  {
+    id: "e2-3",
+    source: "2",
+    target: "3",
+    markerEnd: {
+      type: MarkerType.Arrow,
+    },
+  },
+  {
+    id: "e3-4",
+    source: "3",
+    target: "4",
     markerEnd: {
       type: MarkerType.Arrow,
     },

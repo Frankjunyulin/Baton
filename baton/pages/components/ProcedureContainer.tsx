@@ -2,7 +2,7 @@ import {Fragment, useState} from "react";
 import TransitionBar from "./TransitionBar";
 import ProcedureList from "./ProcedureList";
 
-export default function MainContainer() {
+export default function ProcedureContainer() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (

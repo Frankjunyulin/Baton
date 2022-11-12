@@ -1,4 +1,5 @@
 import {Fragment} from "react";
+import {useRouter} from "next/router";
 import {Dialog, Menu, Transition} from "@headlessui/react";
 import {
   Bars3CenterLeftIcon,
@@ -17,13 +18,6 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
 
-const navigation = [
-  {name: "Procedures", href: "#", icon: HomeIcon, current: true},
-  {name: "Backlog", href: "#", icon: FolderIcon, current: false},
-  {name: "My procedures", href: "#", icon: BookOpenIcon, current: false},
-  {name: "Components", href: "#", icon: CalendarIcon, current: false},
-];
-
 const teams = [
   {name: "Engineering", href: "#", bgColorClass: "bg-indigo-500"},
   {name: "Human Resources", href: "#", bgColorClass: "bg-green-500"},
@@ -40,6 +34,23 @@ type Props = {
 };
 
 export default function TransitionBar({sidebarOpen, setSidebarOpen}: Props) {
+  const router = useRouter();
+  const navigation = [
+    {
+      name: "Procedures",
+      href: "/components/ProcedureContainer",
+      icon: HomeIcon,
+      current:
+        router.pathname == null ||
+        router.pathname === "/components/ProcedureContainer",
+    },
+    {
+      name: "My tasks",
+      href: "/components/TaskContainer",
+      icon: BookOpenIcon,
+      current: router.pathname === "/components/TaskContainer",
+    },
+  ];
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>

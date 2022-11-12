@@ -106,7 +106,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                 id="slide-over-heading"
                                 className="text-lg font-medium text-gray-900"
                               >
-                                Step 1
+                                Extract SO number
                               </h1>
                             </div>
                             <div>
@@ -123,7 +123,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                   rows={4}
                                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                   defaultValue={
-                                    "Step 1 is the first step of this task. It is also the starting point of this procedure."
+                                    "Download SO document and extract SO number from it."
                                   }
                                 />
                               </div>
@@ -164,7 +164,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                             </div>
                             <fieldset>
                               <legend className="text-sm font-medium text-gray-900">
-                                Acceptance Criteria
+                                Tasks
                               </legend>
                               <div className="mt-2 space-y-5">
                                 <div className="relative flex items-start">
@@ -181,7 +181,7 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                   <div className="pl-7 text-sm">
                                     <Link
                                       href={{
-                                        pathname: "/components/TaskContainer",
+                                        pathname: "/components/TaskDetails",
                                         query: {id: 1},
                                       }}
                                       className="font-medium text-gray-900 hover:text-gray-600"
@@ -190,15 +190,14 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                         htmlFor="privacy-public"
                                         className="font-medium text-gray-900"
                                       >
-                                        Public access
+                                        Download attachment
                                       </label>
                                     </Link>
                                     <p
                                       id="privacy-public-description"
                                       className="text-gray-500"
                                     >
-                                      Everyone with the link will see this
-                                      project.
+                                      Download SO document from email attachment
                                     </p>
                                   </div>
                                 </div>
@@ -218,42 +217,13 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                         htmlFor="privacy-private-to-project"
                                         className="font-medium text-gray-900"
                                       >
-                                        Private to project members
+                                        Extract SO number
                                       </label>
                                       <p
                                         id="privacy-private-to-project-description"
                                         className="text-gray-500"
                                       >
-                                        Only members of this project would be
-                                        able to access.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div className="relative flex items-start">
-                                    <div className="absolute flex h-5 items-center">
-                                      <input
-                                        id="privacy-private"
-                                        name="privacy"
-                                        aria-describedby="privacy-private-to-project-description"
-                                        type="checkbox"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                      />
-                                    </div>
-                                    <div className="pl-7 text-sm">
-                                      <label
-                                        htmlFor="privacy-private"
-                                        className="font-medium text-gray-900"
-                                      >
-                                        Private to you
-                                      </label>
-                                      <p
-                                        id="privacy-private-description"
-                                        className="text-gray-500"
-                                      >
-                                        You are the only one able to access this
-                                        project.
+                                        Extract SO number from SO document
                                       </p>
                                     </div>
                                   </div>

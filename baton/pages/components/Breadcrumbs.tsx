@@ -1,11 +1,10 @@
 import {ChevronRightIcon, HomeIcon} from "@heroicons/react/20/solid";
 
-const pages = [
-  {name: "Procedures", href: "/components/MainContainer", current: false},
-  {name: "ARIA attribute misspelled", href: "", current: true},
-];
+type Props = {
+  breadTags: Any;
+};
 
-export default function Breadcrumbs() {
+export default function Breadcrumbs({breadTags}: Props) {
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-4">
@@ -17,7 +16,7 @@ export default function Breadcrumbs() {
             </a>
           </div>
         </li>
-        {pages.map((page) => (
+        {breadTags.map((page) => (
           <li key={page.name}>
             <div className="flex items-center">
               <ChevronRightIcon

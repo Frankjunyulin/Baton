@@ -31,16 +31,16 @@ import {
   EllipsisVerticalIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
-import ProcedureCreate from "./ProcedureCreate";
 import TransitionBar from "./TransitionBar";
 
-const procedures = [
+const tasks = [
   {
     id: 1,
-    title: "Upload and digitize SO",
+    title: "Download attachment document",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureDetails",
+    milestone: "Extract SO",
+    link: "/components/TaskDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -48,18 +48,80 @@ const procedures = [
         imageUrl:
           "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
+    ],
+    totalAssignees: 1,
+    lastUpdated: "January 10, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 6,
+    title: "Extract SO number from document",
+    initials: "GA",
+    team: "Operation",
+    milestone: "Extract SO",
+    link: "/components/TaskDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 1,
+    lastUpdated: "January 10, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 2,
+    title: "Find shipment by SO number",
+    initials: "GA",
+    team: "Operation",
+    milestone: "Find shipment",
+    link: "/components/TaskDetails",
+    assignees: [
       {
         name: "Lindsay Walton",
         handle: "lindsaywalton",
         imageUrl:
           "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
+    ],
+    totalAssignees: 1,
+    lastUpdated: "January 17, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 3,
+    title: "Digitize SO",
+    initials: "GA",
+    team: "Operation",
+    milestone: "Digitize SO",
+    link: "/components/TaskDetails",
+    assignees: [
       {
         name: "Courtney Henry",
         handle: "courtneyhenry",
         imageUrl:
           "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
+    ],
+    totalAssignees: 1,
+    lastUpdated: "March 17, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 4,
+    title: "Notify to shipment OSO",
+    initials: "GA",
+    team: "Operation",
+    milestone: "Release SO",
+    link: "/components/TaskDetails",
+    assignees: [
       {
         name: "Tom Cook",
         handle: "tomcook",
@@ -67,34 +129,45 @@ const procedures = [
           "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
     ],
-    totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
+    totalAssignees: 1,
+    lastUpdated: "May 17, 2020",
     pinned: true,
     bgColorClass: "bg-pink-600",
   },
-  // More procedures...
+  {
+    id: 5,
+    title: "OSO release SO to shipper",
+    initials: "GA",
+    team: "Operation",
+    milestone: "Release SO",
+    link: "/components/TaskDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 1,
+    lastUpdated: "July 17, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  // More tasks...
 ];
-const pinnedProcedures = procedures.filter((procedure) => procedure.pinned);
+const pinnedTasks = tasks.filter((task) => task.pinned);
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProcedureList() {
+export default function TaskList() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
-  const [procedureList, setProcedureList] = useState(procedures);
+  const [taskList, setTaskList] = useState(tasks);
 
   return (
     <>
-      {isCreateModalOpen && (
-        <ProcedureCreate
-          isCreateModalOpen={isCreateModalOpen}
-          setCreateModalOpen={setCreateModalOpen}
-          procedureList={procedureList}
-          setProcedureList={setProcedureList}
-        />
-      )}
       {/*
         This example requires updating your template:
 
@@ -305,130 +378,17 @@ export default function ProcedureList() {
               </button>
             </div>
           </div>
-          {/* Pinned procedures */}
-          <div className="mt-6 px-4 sm:px-6 lg:px-8">
-            <h2 className="text-sm font-medium text-gray-900">
-              Pinned Procedures
-            </h2>
-            <ul
-              role="list"
-              className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4"
-            >
-              {pinnedProcedures.map((procedure) => (
-                <li
-                  key={procedure.id}
-                  className="relative col-span-1 flex rounded-md shadow-sm"
-                >
-                  <div
-                    className={classNames(
-                      procedure.bgColorClass,
-                      "flex-shrink-0 flex items-center justify-center w-16 text-white text-sm font-medium rounded-l-md"
-                    )}
-                  >
-                    {procedure.initials}
-                  </div>
-                  <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
-                    <div className="flex-1 truncate px-4 py-2 text-sm">
-                      <Link
-                        href={{
-                          pathname: "/components/ProcedureDetails",
-                          query: {id: procedure.id},
-                        }}
-                        className="font-medium text-gray-900 hover:text-gray-600"
-                      >
-                        {procedure.title}
-                      </Link>
-                      <p className="text-gray-500">
-                        {procedure.totalAssignees} Assignees
-                      </p>
-                    </div>
-                    <Menu as="div" className="flex-shrink-0 pr-2">
-                      <Menu.Button className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-                        <span className="sr-only">Open options</span>
-                        <EllipsisVerticalIcon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </Menu.Button>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-10 top-3 z-10 mx-3 mt-1 w-48 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <div className="py-1">
-                            <Menu.Item>
-                              {({active}) => (
-                                <a
-                                  href={procedure.link}
-                                  className={classNames(
-                                    active
-                                      ? "bg-gray-100 text-gray-900"
-                                      : "text-gray-700",
-                                    "block px-4 py-2 text-sm"
-                                  )}
-                                >
-                                  View
-                                </a>
-                              )}
-                            </Menu.Item>
-                          </div>
-                          <div className="py-1">
-                            <Menu.Item>
-                              {({active}) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
-                                    active
-                                      ? "bg-gray-100 text-gray-900"
-                                      : "text-gray-700",
-                                    "block px-4 py-2 text-sm"
-                                  )}
-                                >
-                                  Removed from pinned
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({active}) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
-                                    active
-                                      ? "bg-gray-100 text-gray-900"
-                                      : "text-gray-700",
-                                    "block px-4 py-2 text-sm"
-                                  )}
-                                >
-                                  Share
-                                </a>
-                              )}
-                            </Menu.Item>
-                          </div>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Procedures list (only on smallest breakpoint) */}
+          {/* Tasks list (only on smallest breakpoint) */}
           <div className="mt-10 sm:hidden">
             <div className="px-4 sm:px-6">
-              <h2 className="text-sm font-medium text-gray-900">Procedures</h2>
+              <h2 className="text-sm font-medium text-gray-900">Tasks</h2>
             </div>
             <ul
               role="list"
               className="mt-3 divide-y divide-gray-100 border-t border-gray-200"
             >
-              {procedureList.map((procedure) => (
-                <li key={procedure.id}>
+              {taskList.map((task) => (
+                <li key={task.id}>
                   <a
                     href="#"
                     className="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6"
@@ -436,15 +396,15 @@ export default function ProcedureList() {
                     <span className="flex items-center space-x-3 truncate">
                       <span
                         className={classNames(
-                          procedure.bgColorClass,
+                          task.bgColorClass,
                           "w-2.5 h-2.5 flex-shrink-0 rounded-full"
                         )}
                         aria-hidden="true"
                       />
                       <span className="truncate text-sm font-medium leading-6">
-                        {procedure.title}{" "}
+                        {task.title}{" "}
                         <span className="truncate font-normal text-gray-500">
-                          in {procedure.team}
+                          in {task.team}
                         </span>
                       </span>
                     </span>
@@ -458,7 +418,7 @@ export default function ProcedureList() {
             </ul>
           </div>
 
-          {/* Procedures table (small breakpoint and up) */}
+          {/* Tasks table (small breakpoint and up) */}
           <div className="mt-8 hidden sm:block">
             <div className="inline-block min-w-full border-b border-gray-200 align-middle">
               <table className="min-w-full">
@@ -468,13 +428,25 @@ export default function ProcedureList() {
                       className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                       scope="col"
                     >
-                      <span className="lg:pl-2">Procedure</span>
+                      <span className="lg:pl-2">Task</span>
                     </th>
                     <th
                       className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                       scope="col"
                     >
-                      Assignees
+                      Procedure
+                    </th>
+                    <th
+                      className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      scope="col"
+                    >
+                      Milestone
+                    </th>
+                    <th
+                      className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      scope="col"
+                    >
+                      Assignee
                     </th>
                     <th
                       className="hidden border-b border-gray-200 bg-gray-50 px-6 py-3 text-right text-sm font-semibold text-gray-900 md:table-cell"
@@ -489,37 +461,51 @@ export default function ProcedureList() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 bg-white">
-                  {procedureList.map((procedure) => (
-                    <tr key={procedure.id}>
+                  {taskList.map((task) => (
+                    <tr key={task.id}>
                       <td className="w-full max-w-0 whitespace-nowrap px-6 py-3 text-sm font-medium text-gray-900">
                         <div className="flex items-center space-x-3 lg:pl-2">
                           <div
                             className={classNames(
-                              procedure.bgColorClass,
+                              task.bgColorClass,
                               "flex-shrink-0 w-2.5 h-2.5 rounded-full"
                             )}
                             aria-hidden="true"
                           />
                           <Link
                             href={{
-                              pathname: "/components/ProcedureDetails",
-                              query: {id: procedure.id},
+                              pathname: "/components/TaskDetails",
+                              query: {id: task.id},
                             }}
                             className="font-medium text-gray-900 hover:text-gray-600"
                           >
                             <span>
-                              {procedure.title}{" "}
+                              {task.title}{" "}
                               <span className="font-normal text-gray-500">
-                                in {procedure.team}
+                                in {task.team}
                               </span>
                             </span>
                           </Link>
                         </div>
                       </td>
+                      <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
+                        <Link
+                          href={{
+                            pathname: "/components/DetailContainer",
+                            query: {id: task.id},
+                          }}
+                          className="font-medium text-gray-900 hover:text-gray-600"
+                        >
+                          Upload and digitize SO
+                        </Link>
+                      </td>
+                      <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
+                        {task.milestone}
+                      </td>
                       <td className="px-6 py-3 text-sm font-medium text-gray-500">
                         <div className="flex items-center space-x-2">
                           <div className="flex flex-shrink-0 -space-x-1">
-                            {procedure.assignees.map((assignee) => (
+                            {task.assignees.map((assignee) => (
                               <img
                                 key={assignee.handle}
                                 className="h-6 w-6 max-w-none rounded-full ring-2 ring-white"
@@ -528,18 +514,15 @@ export default function ProcedureList() {
                               />
                             ))}
                           </div>
-                          {procedure.totalAssignees >
-                          procedure.assignees.length ? (
+                          {task.totalAssignees > task.assignees.length ? (
                             <span className="flex-shrink-0 text-xs font-medium leading-5">
-                              +
-                              {procedure.totalAssignees -
-                                procedure.assignees.length}
+                              +{task.totalAssignees - task.assignees.length}
                             </span>
                           ) : null}
                         </div>
                       </td>
                       <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
-                        {procedure.lastUpdated}
+                        {task.lastUpdated}
                       </td>
                       <td className="whitespace-nowrap px-6 py-3 text-right text-sm font-medium">
                         <a
