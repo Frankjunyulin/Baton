@@ -61,6 +61,8 @@ import ProcedureFlow from "./ProcedureFlow";
 import StepDropdown from "./StepDropdown";
 import StepSlideOver from "./StepSlideOver";
 import TransitionBar from "./TransitionBar";
+import Tabs from "./Tabs";
+import InstanceTable from "./InstanceTable";
 
 /*
 const activity = [
@@ -353,23 +355,28 @@ export default function ProcedureDetails() {
                   >
                     <div>
                       <div className="divide-y divide-gray-200">
-                        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b xl:pb-6">
-                          <div className="pb-4">
+                        <div className="md:flex md:items-center md:justify-between md:space-x-4 xl:border-b">
+                          {/*
+                            <div className="pb-4">
                             <h2
                               id="activity-title"
                               className="text-lg font-medium text-gray-900"
                             >
                               Milestones
                             </h2>
-                          </div>
+                            </div>*/}
+                          <Tabs></Tabs>
                           <StepDropdown />
                         </div>
                         <div className="pt-6">
                           {/* Activity feed*/}
+                          {/*
                           <ProcedureFlow
                             steps={tasks}
                             setSelectedStep={setSelectedStep}
                           />
+                          */}
+                          <InstanceTable />
                           {/*
                           <div className="flow-root">
                             <ul role="list" className="-mb-8">
