@@ -23,6 +23,7 @@
   ```
 */
 import {Fragment, useState} from "react";
+import {useRouter} from "next/router";
 import {Dialog, Menu, Transition} from "@headlessui/react";
 import {
   ArchiveBoxIcon,
@@ -154,8 +155,11 @@ const initialNodes = [
 const initialEdges = [{id: "e1-2", source: "1", target: "2"}];
 
 export default function ProcedureDetails() {
+  const router = useRouter();
+  console.log(router.query);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedStep, setSelectedStep] = useState(null);
+  const [selectedTab, setSelectedTab] = useState("Tasks");
 
   return (
     <>
@@ -365,7 +369,10 @@ export default function ProcedureDetails() {
                               Milestones
                             </h2>
                             </div>*/}
-                          <Tabs></Tabs>
+                          <Tabs
+                            selectedTab={selectedTab}
+                            setSelectedTab={setSelectedTab}
+                          ></Tabs>
                           <StepDropdown />
                         </div>
                         <div className="pt-6">
@@ -376,7 +383,13 @@ export default function ProcedureDetails() {
                             setSelectedStep={setSelectedStep}
                           />
                           */}
-                          <InstanceTable />
+                          {selectedTab !== "Milestones" && <InstanceTable />}
+                          {selectedTab === "Milestones" && (
+                            <ProcedureFlow
+                              steps={tasks}
+                              setSelectedStep={() => {}}
+                            />
+                          )}
                           {/*
                           <div className="flow-root">
                             <ul role="list" className="-mb-8">

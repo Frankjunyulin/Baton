@@ -76,7 +76,11 @@ const tasks = [
 
 const breadTags = [
   {name: "Procedures", href: "/components/ProcedureContainer", current: false},
-  {name: "Upload and digitize SO", current: false},
+  {
+    name: "Upload and digitize SO",
+    href: "/components/ProcedureDetails",
+    current: false,
+  },
   {name: "Upload and digitize SO - 31540", current: true},
 ];
 

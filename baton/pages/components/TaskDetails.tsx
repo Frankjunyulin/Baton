@@ -82,13 +82,15 @@ const breadTags = [
   {name: "Procedures", href: "/components/ProcedureContainer", current: false},
   {
     name: "Upload and digitize SO",
-    href: {
-      pathname: "/components/ProcedureDetails",
-      query: {},
-    },
+    href: "/components/ProcedureDetails",
     current: false,
   },
-  {name: "Download SO document", current: false},
+  {
+    name: "Upload and digitize SO - 31540",
+    href: "/components/ProcedureInstanceDetails",
+    current: false,
+  },
+  {name: "Download SO document", current: true},
 ];
 
 function classNames(...classes) {

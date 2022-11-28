@@ -9,6 +9,7 @@ import {
   PencilSquareIcon,
   TrashIcon,
   UserPlusIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
@@ -59,7 +60,37 @@ function classNames(...classes) {
 
 export default function InstanceTable() {
   return (
-    <div className="mt-8 hidden sm:block">
+    <div className="hidden sm:block">
+      <div className="border-b border-gray-200 py-4 sm:flex sm:items-center sm:justify-between">
+        <div className="flex flex-1">
+          <form className="flex w-full lg:ml-0" action="#" method="GET">
+            <label htmlFor="search-field" className="sr-only">
+              Search
+            </label>
+            <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
+                <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <input
+                id="search-field"
+                className="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
+                placeholder="Search"
+                type="search"
+                name="search"
+              />
+            </div>
+          </form>
+        </div>
+        <div className="mt-4 flex sm:mt-0 sm:ml-4">
+          <button
+            type="button"
+            className="order-0 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:order-1 sm:ml-3"
+            onClick={() => {}}
+          >
+            Create
+          </button>
+        </div>
+      </div>
       <div className="inline-block min-w-full border-b border-gray-200 align-middle">
         <table className="min-w-full">
           <thead>

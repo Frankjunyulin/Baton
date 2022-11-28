@@ -1,27 +1,28 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+import Link from "next/link";
+
 const tabs = [
-  {name: "Tasks", href: "#", current: true},
-  {name: "Milestones", href: "#", current: false},
+  {
+    name: "Tasks",
+    href: {pathname: "", query: {tab: "Tasks"}},
+    current: true,
+  },
+  {
+    name: "Milestones",
+    href: {pathname: "", query: {tab: "Milestones"}},
+    current: false,
+  },
 ];
+
+type Props = {
+  selectedTab: String;
+  setSelectedTab: (val: String) => void;
+};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Tabs() {
+export default function Tabs({selectedTab, setSelectedTab}: Props) {
   return (
     <div>
       <div className="sm:hidden">
@@ -33,7 +34,7 @@ export default function Tabs() {
           id="tabs"
           name="tabs"
           className="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-          defaultValue={tabs.find((tab) => tab.current).name}
+          defaultValue={selectedTab}
         >
           {tabs.map((tab) => (
             <option key={tab.name}>{tab.name}</option>
@@ -45,17 +46,22 @@ export default function Tabs() {
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
             {tabs.map((tab) => (
               <a
-                key={tab.name}
-                href={tab.href}
-                className={classNames(
-                  tab.current
-                    ? "border-indigo-500 text-indigo-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                  "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
-                )}
-                aria-current={tab.current ? "page" : undefined}
+                onClick={() => {
+                  setSelectedTab(tab.name);
+                }}
               >
-                {tab.name}
+                <div
+                  key={tab.name}
+                  className={classNames(
+                    tab.name === selectedTab
+                      ? "border-indigo-500 text-indigo-600"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
+                    "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
+                  )}
+                  aria-current={tab.current ? "page" : undefined}
+                >
+                  {tab.name}
+                </div>
               </a>
             ))}
           </nav>
