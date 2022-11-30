@@ -1,20 +1,7 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import {Fragment, useState} from "react";
 import {Dialog, Menu, Transition} from "@headlessui/react";
-import Link from "next/link";
+// import Link from "next/link";
+import {Link} from "@mui/material";
 import {
   Bars3CenterLeftIcon,
   Bars4Icon,
@@ -473,10 +460,8 @@ export default function TaskList() {
                             aria-hidden="true"
                           />
                           <Link
-                            href={{
-                              pathname: "/components/TaskDetails",
-                              query: {id: task.id},
-                            }}
+                            href="/components/TaskDetails"
+                            underline="none"
                             className="font-medium text-gray-900 hover:text-gray-600"
                           >
                             <span>
@@ -490,10 +475,8 @@ export default function TaskList() {
                       </td>
                       <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
                         <Link
-                          href={{
-                            pathname: "/components/DetailContainer",
-                            query: {id: task.id},
-                          }}
+                          href="/components/DetailContainer"
+                          underline="none"
                           className="font-medium text-gray-900 hover:text-gray-600"
                         >
                           Upload and digitize SO

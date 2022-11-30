@@ -14,7 +14,8 @@
 */
 import {Fragment, useState} from "react";
 import {Dialog, Menu, Transition} from "@headlessui/react";
-import Link from "next/link";
+// import Link from "next/link";
+import {Link} from "@mui/material";
 import {
   Bars3CenterLeftIcon,
   Bars4Icon,
@@ -330,10 +331,8 @@ export default function ProcedureList() {
                   <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
                     <div className="flex-1 truncate px-4 py-2 text-sm">
                       <Link
-                        href={{
-                          pathname: "/components/ProcedureDetails",
-                          query: {id: procedure.id},
-                        }}
+                        href="/components/ProcedureDetails"
+                        underline="none"
                         className="font-medium text-gray-900 hover:text-gray-600"
                       >
                         {procedure.title}
@@ -501,10 +500,8 @@ export default function ProcedureList() {
                             aria-hidden="true"
                           />
                           <Link
-                            href={{
-                              pathname: "/components/ProcedureDetails",
-                              query: {id: procedure.id},
-                            }}
+                            href="/components/ProcedureDetails"
+                            underline="none"
                             className="font-medium text-gray-900 hover:text-gray-600"
                           >
                             <span>

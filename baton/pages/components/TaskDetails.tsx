@@ -162,11 +162,11 @@ export default function TaskDetails() {
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
                           >
-                            <BellIcon
-                              className="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                            <CheckCircleIcon
+                              className="-ml-1 mr-2 h-5 w-5 text-green-500"
                               aria-hidden="true"
                             />
-                            <span>Subscribe</span>
+                            <span>Complete</span>
                           </button>
                         </div>
                       </div>
@@ -491,16 +491,6 @@ export default function TaskDetails() {
                                     />
                                   </div>
                                   <div className="mt-6 flex items-center justify-end space-x-4">
-                                    <button
-                                      type="button"
-                                      className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-                                    >
-                                      <CheckCircleIcon
-                                        className="-ml-1 mr-2 h-5 w-5 text-green-500"
-                                        aria-hidden="true"
-                                      />
-                                      <span>Close issue</span>
-                                    </button>
                                     <button
                                       type="submit"
                                       className="inline-flex items-center justify-center rounded-md border border-transparent bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"

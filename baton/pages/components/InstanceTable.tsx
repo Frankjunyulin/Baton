@@ -11,7 +11,8 @@ import {
   UserPlusIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
-import Link from "next/link";
+// import Link from "next/link";
+import {Link} from "@mui/material";
 
 const instances = [
   {
@@ -132,10 +133,8 @@ export default function InstanceTable() {
                       aria-hidden="true"
                     />
                     <Link
-                      href={{
-                        pathname: "/components/ProcedureInstanceDetails",
-                        query: {id: instance.id},
-                      }}
+                      href="/components/ProcedureInstanceDetails"
+                      underline="none"
                       className="font-medium text-gray-900 hover:text-gray-600"
                     >
                       <span>

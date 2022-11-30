@@ -13,7 +13,8 @@
   ```
 */
 import {Fragment, useState} from "react";
-import Link from "next/link";
+// import Link from "next/link";
+import {Link} from "@mui/material";
 import {Dialog, Transition} from "@headlessui/react";
 import {XMarkIcon} from "@heroicons/react/24/outline";
 
@@ -21,6 +22,7 @@ import {
   LinkIcon,
   PlusIcon,
   QuestionMarkCircleIcon,
+  CheckCircleIcon,
 } from "@heroicons/react/20/solid";
 
 const team = [
@@ -67,8 +69,6 @@ type Props = {
 };
 
 export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
-  const [open, setOpen] = useState(true);
-
   // console.log(selectedStep);
 
   return (
@@ -169,29 +169,18 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                               <div className="mt-2 space-y-5">
                                 <div className="relative flex items-start">
                                   <div className="absolute flex h-5 items-center">
-                                    <input
-                                      id="privacy-public"
-                                      name="privacy"
-                                      aria-describedby="privacy-public-description"
-                                      type="checkbox"
-                                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                      defaultChecked
+                                    <CheckCircleIcon
+                                      className="h-5 w-5 text-green-500 group-hover:text-green-900"
+                                      aria-hidden="true"
                                     />
                                   </div>
                                   <div className="pl-7 text-sm">
                                     <Link
-                                      href={{
-                                        pathname: "/components/TaskDetails",
-                                        query: {id: 1},
-                                      }}
+                                      href="/components/TaskDetails"
+                                      underline="none"
                                       className="font-medium text-gray-900 hover:text-gray-600"
                                     >
-                                      <label
-                                        htmlFor="privacy-public"
-                                        className="font-medium text-gray-900"
-                                      >
-                                        Download attachment
-                                      </label>
+                                      Download attachment
                                     </Link>
                                     <p
                                       id="privacy-public-description"
@@ -204,27 +193,19 @@ export default function StepSlideOver({selectedStep, setSelectedStep}: Props) {
                                 <div>
                                   <div className="relative flex items-start">
                                     <div className="absolute flex h-5 items-center">
-                                      <input
-                                        id="privacy-private-to-project"
-                                        name="privacy"
-                                        aria-describedby="privacy-private-to-project-description"
-                                        type="checkbox"
-                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      <CheckCircleIcon
+                                        className="h-5 w-5 text-green-500 group-hover:text-green-900"
+                                        aria-hidden="true"
                                       />
                                     </div>
                                     <div className="pl-7 text-sm">
-                                      <label
-                                        htmlFor="privacy-private-to-project"
-                                        className="font-medium text-gray-900"
-                                      >
-                                        Extract SO number
-                                      </label>
-                                      <p
-                                        id="privacy-private-to-project-description"
-                                        className="text-gray-500"
+                                      <Link
+                                        href="/components/TaskDetails"
+                                        underline="none"
+                                        className="font-medium text-gray-900 hover:text-gray-600"
                                       >
                                         Extract SO number from SO document
-                                      </p>
+                                      </Link>
                                     </div>
                                   </div>
                                 </div>
