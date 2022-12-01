@@ -5,6 +5,7 @@ import {
   Bars3CenterLeftIcon,
   Bars4Icon,
   ClockIcon,
+  ChartBarIcon,
   HomeIcon,
   XMarkIcon,
   FolderIcon,
@@ -48,6 +49,12 @@ export default function TransitionBar({sidebarOpen, setSidebarOpen}: Props) {
       name: "My tasks",
       href: "/components/TaskContainer",
       icon: BookOpenIcon,
+      current: router.pathname === "/components/TaskContainer",
+    },
+    {
+      name: "Analytics",
+      href: "/components/Analytics",
+      icon: ChartBarIcon,
       current: router.pathname === "/components/TaskContainer",
     },
   ];

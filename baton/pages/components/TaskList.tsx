@@ -475,7 +475,7 @@ export default function TaskList() {
                       </td>
                       <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
                         <Link
-                          href="/components/DetailContainer"
+                          href="/components/ProcedureDetails"
                           underline="none"
                           className="font-medium text-gray-900 hover:text-gray-600"
                         >
