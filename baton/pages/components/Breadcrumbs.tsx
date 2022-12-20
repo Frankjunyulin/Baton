@@ -11,7 +11,7 @@ export default function Breadcrumbs({breadTags}: Props) {
         <li>
           <div>
             <a
-              href="/components/ProcedureContainer"
+              href="/ProcedureContainer"
               className="text-gray-400 hover:text-gray-500"
             >
               <HomeIcon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />

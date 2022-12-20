@@ -25,7 +25,7 @@ const initialNodes = [
   {
     id: "4",
     position: {x: 200, y: 300},
-    data: {label: "Eelease SO"},
+    data: {label: "Release SO"},
   },
 ];
 

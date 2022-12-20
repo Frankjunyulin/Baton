@@ -44,16 +44,16 @@ const activity = [
     type: "comment",
     person: {name: "Eduardo Benz", href: "#"},
     imageUrl:
-      "https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt nunc ipsum tempor purus vitae id. Morbi in vestibulum nec varius. Et diam cursus quis sed purus nam. ",
+      "Have downloaded SO document. Please check it, thanks! The flle name is 312342.pdf",
     date: "6d ago",
   },
   {
     id: 2,
     type: "assignment",
     person: {name: "Hilary Mahy", href: "#"},
-    assigned: {name: "Kristin Watson", href: "#"},
+    assigned: {name: "Eduardo Benz", href: "#"},
     date: "2d ago",
   },
   {
@@ -61,25 +61,15 @@ const activity = [
     type: "tags",
     person: {name: "Hilary Mahy", href: "#"},
     tags: [
-      {name: "Bug", href: "#", color: "bg-rose-500"},
-      {name: "Accessibility", href: "#", color: "bg-indigo-500"},
+      {name: "Email", href: "#", color: "bg-rose-500"},
+      {name: "File", href: "#", color: "bg-indigo-500"},
     ],
     date: "6h ago",
-  },
-  {
-    id: 4,
-    type: "comment",
-    person: {name: "Jason Meyers", href: "#"},
-    imageUrl:
-      "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt nunc ipsum tempor purus vitae id. Morbi in vestibulum nec varius. Et diam cursus quis sed purus nam. Scelerisque amet elit non sit ut tincidunt condimentum. Nisl ultrices eu venenatis diam.",
-    date: "2h ago",
   },
 ];
 
 const breadTags = [
-  {name: "Procedures", href: "/components/ProcedureContainer", current: false},
+  {name: "Procedures", href: "/Procedures", current: false},
   {
     name: "Upload and digitize SO",
     href: "/components/ProcedureDetails",
@@ -198,7 +188,7 @@ export default function TaskDetails() {
                             />
                             <span className="text-sm font-medium text-gray-900">
                               Created on{" "}
-                              <time dateTime="2020-12-02">Dec 2, 2020</time>
+                              <time dateTime="2020-12-02">August 2, 2022</time>
                             </span>
                           </div>
                         </div>
@@ -216,7 +206,7 @@ export default function TaskDetails() {
                                   <div className="flex-shrink-0">
                                     <img
                                       className="h-5 w-5 rounded-full"
-                                      src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+                                      src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                                       alt=""
                                     />
                                   </div>
@@ -244,7 +234,7 @@ export default function TaskDetails() {
                                     />
                                   </div>
                                   <div className="ml-3.5 text-sm font-medium text-gray-900">
-                                    Bug
+                                    Email
                                   </div>
                                 </a>{" "}
                               </li>
@@ -260,7 +250,7 @@ export default function TaskDetails() {
                                     />
                                   </div>
                                   <div className="ml-3.5 text-sm font-medium text-gray-900">
-                                    Accessibility
+                                    File
                                   </div>
                                 </a>{" "}
                               </li>
@@ -271,28 +261,23 @@ export default function TaskDetails() {
                       <div className="py-3 xl:pt-6 xl:pb-0">
                         <h2 className="sr-only">Description</h2>
                         <div className="prose max-w-none">
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Expedita, hic? Commodi cumque similique id
-                            tempora molestiae deserunt at suscipit, dolor
-                            voluptatem, numquam, harum consequatur laboriosam
-                            voluptas tempore aut voluptatum alias?
-                          </p>
+                          <p>Booking number: 31540</p>
+                          <br />
+                          <p>Guideline:</p>
                           <ul role="list">
                             <li>
-                              Tempor ultrices proin nunc fames nunc ut auctor
-                              vitae sed. Eget massa parturient vulputate
-                              fermentum id facilisis nam pharetra. Aliquet leo
-                              tellus.
+                              1. Search booking number in the email inbox.
                             </li>
                             <li>
-                              Turpis ac nunc adipiscing adipiscing metus
-                              tincidunt senectus tellus.
+                              2. Find and open the most-recent related email.
                             </li>
                             <li>
-                              Semper interdum porta sit tincidunt. Dui
-                              suspendisse scelerisque amet metus eget sed. Ut
-                              tellus in sed dignissim.
+                              3. Download a file called "SO document" attached
+                              in the email.
+                            </li>
+                            <li>
+                              4. Put the download file in your team's shared
+                              folder.
                             </li>
                           </ul>
                         </div>
@@ -460,7 +445,7 @@ export default function TaskDetails() {
                                 <div className="relative">
                                   <img
                                     className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400 ring-8 ring-white"
-                                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+                                    src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                                     alt=""
                                   />
 
@@ -496,6 +481,12 @@ export default function TaskDetails() {
                                       className="inline-flex items-center justify-center rounded-md border border-transparent bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
                                     >
                                       Comment
+                                    </button>
+                                    <button
+                                      type="submit"
+                                      className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2"
+                                    >
+                                      Share
                                     </button>
                                   </div>
                                 </form>
@@ -572,7 +563,7 @@ export default function TaskDetails() {
                             <div className="flex-shrink-0">
                               <img
                                 className="h-5 w-5 rounded-full"
-                                src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
+                                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                                 alt=""
                               />
                             </div>
@@ -600,7 +591,7 @@ export default function TaskDetails() {
                               />
                             </div>
                             <div className="ml-3.5 text-sm font-medium text-gray-900">
-                              Bug
+                              Email
                             </div>
                           </a>{" "}
                         </li>
@@ -616,7 +607,7 @@ export default function TaskDetails() {
                               />
                             </div>
                             <div className="ml-3.5 text-sm font-medium text-gray-900">
-                              Accessibility
+                              File
                             </div>
                           </a>{" "}
                         </li>

@@ -1,8 +1,8 @@
 import {Fragment, useState} from "react";
-import TransitionBar from "./TransitionBar";
-import TaskList from "./TaskList";
+import TransitionBar from "./components/TransitionBar";
+import TaskList from "./components/TaskList";
 
-export default function ProcedureContainer() {
+export default function Tasks() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (

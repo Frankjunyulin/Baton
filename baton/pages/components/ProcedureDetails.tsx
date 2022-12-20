@@ -60,10 +60,15 @@ import ReactFlow, {
 import Breadcrumbs from "./Breadcrumbs";
 import ProcedureFlow from "./ProcedureFlow";
 import StepDropdown from "./StepDropdown";
-import StepSlideOver from "./StepSlideOver";
+// import StepSlideOver from "./StepSlideOver";
 import TransitionBar from "./TransitionBar";
 import Tabs from "./Tabs";
 import InstanceTable from "./InstanceTable";
+
+import dynamic from "next/dynamic";
+const MilestoneSlideOver = dynamic(() => import("./MilestoneSlideOver"), {
+  ssr: false,
+}); //<- set SSr to false
 
 /*
 const activity = [
@@ -143,7 +148,7 @@ const tasks = [
 ];
 
 const breadTags = [
-  {name: "Procedures", href: "/components/ProcedureContainer", current: false},
+  {name: "Procedures", href: "/Procedures", current: false},
   {name: "Upload and digitize SO", current: true},
 ];
 
@@ -159,16 +164,10 @@ export default function ProcedureDetails() {
   console.log(router.query);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedStep, setSelectedStep] = useState(null);
-  const [selectedTab, setSelectedTab] = useState("Tasks");
+  const [selectedTab, setSelectedTab] = useState("Instances");
 
   return (
     <>
-      {selectedStep && (
-        <StepSlideOver
-          selectedStep={selectedStep}
-          setSelectedStep={setSelectedStep}
-        />
-      )}
       {/*
         This example requires updating your template:
 
@@ -177,6 +176,13 @@ export default function ProcedureDetails() {
         <body class="h-full">
         ```
       */}
+      {selectedStep && (
+        <MilestoneSlideOver
+          selectedStep={selectedStep}
+          setSelectedStep={setSelectedStep}
+          hideTaskStatus={true}
+        />
+      )}
       <div className="flex min-h-full">
         <TransitionBar
           sidebarOpen={sidebarOpen}
@@ -211,14 +217,10 @@ export default function ProcedureDetails() {
                             Upload and digitize SO
                           </h1>
                           <p className="mt-2 text-sm text-gray-500">
-                            #400 opened by{" "}
+                            #1312 opened by{" "}
                             <a href="#" className="font-medium text-gray-900">
-                              Hilary Mahy
+                              Jessy Schwarz
                             </a>{" "}
-                            in{" "}
-                            <a href="#" className="font-medium text-gray-900">
-                              Customer Portal
-                            </a>
                           </p>
                         </div>
                         <div className="mt-4 flex space-x-3 md:mt-0">
@@ -387,7 +389,7 @@ export default function ProcedureDetails() {
                           {selectedTab === "Milestones" && (
                             <ProcedureFlow
                               steps={tasks}
-                              setSelectedStep={() => {}}
+                              setSelectedStep={setSelectedStep}
                             />
                           )}
                           {/*

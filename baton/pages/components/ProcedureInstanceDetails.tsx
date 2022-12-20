@@ -33,11 +33,17 @@ import ReactFlow, {
 } from "reactflow";
 
 import Breadcrumbs from "./Breadcrumbs";
-import ProcedureFlow from "./ProcedureFlow";
+// import ProcedureFlow from "./ProcedureFlow";
 import StepDropdown from "./StepDropdown";
-import StepSlideOver from "./StepSlideOver";
+// import StepSlideOver from "./StepSlideOver";
 import TransitionBar from "./TransitionBar";
 import Tabs from "./Tabs";
+
+import dynamic from "next/dynamic";
+const ProcedureFlow = dynamic(() => import("./ProcedureFlow"), {ssr: false}); //<- set SSr to false
+const MilestoneSlideOver = dynamic(() => import("./MilestoneSlideOver"), {
+  ssr: false,
+}); //<- set SSr to false
 
 const tasks = [
   {
@@ -54,7 +60,7 @@ const tasks = [
       },
     ],
     totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
+    lastUpdated: "Nov 17, 2022",
   },
   {
     id: "2",
@@ -70,12 +76,12 @@ const tasks = [
       },
     ],
     totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
+    lastUpdated: "Nov 17, 2022",
   },
 ];
 
 const breadTags = [
-  {name: "Procedures", href: "/components/ProcedureContainer", current: false},
+  {name: "Procedures", href: "/Procedures", current: false},
   {
     name: "Upload and digitize SO",
     href: "/components/ProcedureDetails",
@@ -98,9 +104,10 @@ export default function ProcedureInstanceDetails() {
   return (
     <>
       {selectedStep && (
-        <StepSlideOver
+        <MilestoneSlideOver
           selectedStep={selectedStep}
           setSelectedStep={setSelectedStep}
+          hideTaskStatus={false}
         />
       )}
       <div className="flex min-h-full">
@@ -137,13 +144,9 @@ export default function ProcedureInstanceDetails() {
                             Upload and digitize SO - 31540
                           </h1>
                           <p className="mt-2 text-sm text-gray-500">
-                            #400 opened by{" "}
+                            #400 Created by{" "}
                             <a href="#" className="font-medium text-gray-900">
                               Hilary Mahy
-                            </a>{" "}
-                            in{" "}
-                            <a href="#" className="font-medium text-gray-900">
-                              Customer Portal
                             </a>
                           </p>
                         </div>

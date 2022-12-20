@@ -20,9 +20,9 @@ import {
 } from "@heroicons/react/20/solid";
 
 const teams = [
-  {name: "Engineering", href: "#", bgColorClass: "bg-indigo-500"},
-  {name: "Human Resources", href: "#", bgColorClass: "bg-green-500"},
-  {name: "Customer Success", href: "#", bgColorClass: "bg-yellow-500"},
+  {name: "Ocean Operation", href: "#", bgColorClass: "bg-indigo-500"},
+  {name: "Supply Chain", href: "#", bgColorClass: "bg-green-500"},
+  {name: "Account Management", href: "#", bgColorClass: "bg-yellow-500"},
 ];
 
 function classNames(...classes: string[]) {
@@ -39,23 +39,21 @@ export default function TransitionBar({sidebarOpen, setSidebarOpen}: Props) {
   const navigation = [
     {
       name: "Procedures",
-      href: "/components/ProcedureContainer",
+      href: "/Procedures",
       icon: HomeIcon,
-      current:
-        router.pathname == null ||
-        router.pathname === "/components/ProcedureContainer",
+      current: router.pathname == null || router.pathname === "/Procedures",
     },
     {
       name: "My tasks",
-      href: "/components/TaskContainer",
+      href: "/Tasks",
       icon: BookOpenIcon,
-      current: router.pathname === "/components/TaskContainer",
+      current: router.pathname === "/Tasks",
     },
     {
       name: "Analytics",
-      href: "/components/Analytics",
+      href: "/Analytics",
       icon: ChartBarIcon,
-      current: router.pathname === "/components/TaskContainer",
+      current: router.pathname === "/Analytics",
     },
   ];
   return (
@@ -193,8 +191,8 @@ export default function TransitionBar({sidebarOpen, setSidebarOpen}: Props) {
         <div className="flex flex-shrink-0 items-center px-6">
           <img
             className="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500"
-            alt="Your Company"
+            src="https://tailwindui.com/img/logoade=500"
+            alt=""
           />
         </div>
         {/* Sidebar component, swap this element with another sidebar if you like */}

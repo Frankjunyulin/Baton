@@ -1,5 +1,6 @@
-import {Fragment} from "react";
+import {Fragment, useState} from "react";
 import {Menu, Transition} from "@headlessui/react";
+import ProcedureCreate from "./ProcedureCreate";
 import {
   ArchiveBoxIcon,
   ArrowRightCircleIcon,
@@ -48,7 +49,266 @@ const instances = [
       },
     ],
     totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
+    lastUpdated: "August 17, 2022",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 2,
+    title: "Upload and digitize SO - 99532",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 15, 2022",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 3,
+    title: "Upload and digitize SO - 31518",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 14, 2022",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 4,
+    title: "Upload and digitize SO - 31440",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 12, 2022",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 5,
+    title: "Upload and digitize SO - 11388",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 10, 2022",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 6,
+    title: "Upload and digitize SO - 9340",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 17, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 7,
+    title: "Upload and digitize SO - 23240",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 17, 2020",
+    pinned: true,
+    bgColorClass: "bg-pink-600",
+  },
+  {
+    id: 8,
+    title: "Upload and digitize SO - 22340",
+    initials: "GA",
+    team: "Operation",
+    link: "/components/ProcedureInstanceDetails",
+    assignees: [
+      {
+        name: "Dries Vincent",
+        handle: "driesvincent",
+        imageUrl:
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Lindsay Walton",
+        handle: "lindsaywalton",
+        imageUrl:
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Courtney Henry",
+        handle: "courtneyhenry",
+        imageUrl:
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+      {
+        name: "Tom Cook",
+        handle: "tomcook",
+        imageUrl:
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      },
+    ],
+    totalAssignees: 12,
+    lastUpdated: "August 17, 2020",
     pinned: true,
     bgColorClass: "bg-pink-600",
   },
@@ -60,8 +320,18 @@ function classNames(...classes) {
 }
 
 export default function InstanceTable() {
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
   return (
     <div className="hidden sm:block">
+      {isCreateModalOpen && (
+        <ProcedureCreate
+          isCreateModalOpen={isCreateModalOpen}
+          setCreateModalOpen={setCreateModalOpen}
+          procedureList={null}
+          setProcedureList={() => {}}
+        />
+      )}
       <div className="border-b border-gray-200 py-4 sm:flex sm:items-center sm:justify-between">
         <div className="flex flex-1">
           <form className="flex w-full lg:ml-0" action="#" method="GET">
@@ -86,7 +356,9 @@ export default function InstanceTable() {
           <button
             type="button"
             className="order-0 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:order-1 sm:ml-3"
-            onClick={() => {}}
+            onClick={() => {
+              setCreateModalOpen(true);
+            }}
           >
             Create
           </button>
@@ -100,7 +372,7 @@ export default function InstanceTable() {
                 className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                 scope="col"
               >
-                <span className="lg:pl-2">Instance</span>
+                <span className="lg:pl-2">Instances</span>
               </th>
               <th
                 className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"

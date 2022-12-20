@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const tabs = [
   {
-    name: "Tasks",
+    name: "Instances",
     href: {pathname: "", query: {tab: "Tasks"}},
     current: true,
   },

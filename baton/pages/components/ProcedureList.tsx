@@ -69,7 +69,7 @@ const procedures = [
       },
     ],
     totalAssignees: 12,
-    lastUpdated: "March 17, 2020",
+    lastUpdated: "August 8, 2022",
     pinned: true,
     bgColorClass: "bg-pink-600",
   },
