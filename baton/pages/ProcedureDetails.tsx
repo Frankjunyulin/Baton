@@ -57,18 +57,21 @@ import ReactFlow, {
   addEdge,
 } from "reactflow";
 
-import Breadcrumbs from "./Breadcrumbs";
-import ProcedureFlow from "./ProcedureFlow";
-import StepDropdown from "./StepDropdown";
+import Breadcrumbs from "./components/Breadcrumbs";
+import ProcedureFlow from "./components/ProcedureFlow";
+import StepDropdown from "./components/StepDropdown";
 // import StepSlideOver from "./StepSlideOver";
-import TransitionBar from "./TransitionBar";
-import Tabs from "./Tabs";
-import InstanceTable from "./InstanceTable";
+import TransitionBar from "./components/TransitionBar";
+import Tabs from "./components/Tabs";
+import InstanceTable from "./components/InstanceTable";
 
 import dynamic from "next/dynamic";
-const MilestoneSlideOver = dynamic(() => import("./MilestoneSlideOver"), {
-  ssr: false,
-}); //<- set SSr to false
+const MilestoneSlideOver = dynamic(
+  () => import("./components/MilestoneSlideOver"),
+  {
+    ssr: false,
+  }
+); //<- set SSr to false
 
 /*
 const activity = [

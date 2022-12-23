@@ -11,7 +11,7 @@ type Props = {
   setProcedureList: (val: list<Any>) => void;
 };
 
-export default function ProcedureCreate({
+export default function InstanceCreate({
   isCreateModalOpen,
   setCreateModalOpen,
   procedureList,
@@ -59,10 +59,10 @@ export default function ProcedureCreate({
                   <form className="space-y-6" action="#" method="POST">
                     <div>
                       <label
-                        htmlFor="email"
+                        htmlFor="instanceId"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Name
+                        ID
                       </label>
                       <div className="mt-1">
                         <input

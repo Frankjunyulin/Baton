@@ -32,7 +32,7 @@ import {
   EllipsisVerticalIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
-import ProcedureCreate from "./ProcedureCreate";
+import InstanceCreate from "./InstanceCreate";
 import TransitionBar from "./TransitionBar";
 
 const procedures = [
@@ -41,7 +41,7 @@ const procedures = [
     title: "Upload and digitize SO",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureDetails",
+    link: "/ProcedureDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -89,7 +89,7 @@ export default function ProcedureList() {
   return (
     <>
       {isCreateModalOpen && (
-        <ProcedureCreate
+        <InstanceCreate
           isCreateModalOpen={isCreateModalOpen}
           setCreateModalOpen={setCreateModalOpen}
           procedureList={procedureList}
@@ -331,7 +331,7 @@ export default function ProcedureList() {
                   <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
                     <div className="flex-1 truncate px-4 py-2 text-sm">
                       <Link
-                        href="/components/ProcedureDetails"
+                        href="/ProcedureDetails"
                         underline="none"
                         className="font-medium text-gray-900 hover:text-gray-600"
                       >
@@ -500,7 +500,7 @@ export default function ProcedureList() {
                             aria-hidden="true"
                           />
                           <Link
-                            href="/components/ProcedureDetails"
+                            href="/ProcedureDetails"
                             underline="none"
                             className="font-medium text-gray-900 hover:text-gray-600"
                           >

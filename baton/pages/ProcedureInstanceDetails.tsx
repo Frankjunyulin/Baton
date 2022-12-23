@@ -32,18 +32,23 @@ import ReactFlow, {
   addEdge,
 } from "reactflow";
 
-import Breadcrumbs from "./Breadcrumbs";
+import Breadcrumbs from "./components/Breadcrumbs";
 // import ProcedureFlow from "./ProcedureFlow";
-import StepDropdown from "./StepDropdown";
+import StepDropdown from "./components/StepDropdown";
 // import StepSlideOver from "./StepSlideOver";
-import TransitionBar from "./TransitionBar";
-import Tabs from "./Tabs";
+import TransitionBar from "./components/TransitionBar";
+import Tabs from "./components/Tabs";
 
 import dynamic from "next/dynamic";
-const ProcedureFlow = dynamic(() => import("./ProcedureFlow"), {ssr: false}); //<- set SSr to false
-const MilestoneSlideOver = dynamic(() => import("./MilestoneSlideOver"), {
+const ProcedureFlow = dynamic(() => import("./components/ProcedureFlow"), {
   ssr: false,
 }); //<- set SSr to false
+const MilestoneSlideOver = dynamic(
+  () => import("./components/MilestoneSlideOver"),
+  {
+    ssr: false,
+  }
+); //<- set SSr to false
 
 const tasks = [
   {
@@ -84,7 +89,7 @@ const breadTags = [
   {name: "Procedures", href: "/Procedures", current: false},
   {
     name: "Upload and digitize SO",
-    href: "/components/ProcedureDetails",
+    href: "/ProcedureDetails",
     current: false,
   },
   {name: "Upload and digitize SO - 31540", current: true},

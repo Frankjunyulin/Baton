@@ -164,7 +164,7 @@ export default function MilestoneSlideOver({
 
                                     <div className="text-sm">
                                       <Link
-                                        href="/components/TaskDetails"
+                                        href="/TaskDetails"
                                         underline="none"
                                         className="font-medium text-gray-900 hover:text-gray-600"
                                       >
@@ -191,7 +191,7 @@ export default function MilestoneSlideOver({
                                       )}
                                       <div className="text-sm">
                                         <Link
-                                          href="/components/TaskDetails"
+                                          href="/TaskDetails"
                                           underline="none"
                                           className="font-medium text-gray-900 hover:text-gray-600"
                                         >

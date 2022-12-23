@@ -1,6 +1,6 @@
 import {Fragment, useState} from "react";
 import {Menu, Transition} from "@headlessui/react";
-import ProcedureCreate from "./ProcedureCreate";
+import InstanceCreate from "./InstanceCreate";
 import {
   ArchiveBoxIcon,
   ArrowRightCircleIcon,
@@ -58,7 +58,7 @@ const instances = [
     title: "Upload and digitize SO - 99532",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -95,7 +95,7 @@ const instances = [
     title: "Upload and digitize SO - 31518",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -132,7 +132,7 @@ const instances = [
     title: "Upload and digitize SO - 31440",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -169,7 +169,7 @@ const instances = [
     title: "Upload and digitize SO - 11388",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -206,7 +206,7 @@ const instances = [
     title: "Upload and digitize SO - 9340",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -243,7 +243,7 @@ const instances = [
     title: "Upload and digitize SO - 23240",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -280,7 +280,7 @@ const instances = [
     title: "Upload and digitize SO - 22340",
     initials: "GA",
     team: "Operation",
-    link: "/components/ProcedureInstanceDetails",
+    link: "/ProcedureInstanceDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -325,7 +325,7 @@ export default function InstanceTable() {
   return (
     <div className="hidden sm:block">
       {isCreateModalOpen && (
-        <ProcedureCreate
+        <InstanceCreate
           isCreateModalOpen={isCreateModalOpen}
           setCreateModalOpen={setCreateModalOpen}
           procedureList={null}
@@ -405,7 +405,7 @@ export default function InstanceTable() {
                       aria-hidden="true"
                     />
                     <Link
-                      href="/components/ProcedureInstanceDetails"
+                      href="/ProcedureInstanceDetails"
                       underline="none"
                       className="font-medium text-gray-900 hover:text-gray-600"
                     >

@@ -1,7 +1,7 @@
 import {Fragment, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
-import TransitionBar from "./TransitionBar";
-import Breadcrumbs from "./Breadcrumbs";
+import TransitionBar from "./components/TransitionBar";
+import Breadcrumbs from "./components/Breadcrumbs";
 import Link from "next/link";
 
 import {
@@ -72,12 +72,12 @@ const breadTags = [
   {name: "Procedures", href: "/Procedures", current: false},
   {
     name: "Upload and digitize SO",
-    href: "/components/ProcedureDetails",
+    href: "/ProcedureDetails",
     current: false,
   },
   {
     name: "Upload and digitize SO - 31540",
-    href: "/components/ProcedureInstanceDetails",
+    href: "/ProcedureInstanceDetails",
     current: false,
   },
   {name: "Download SO document", current: true},

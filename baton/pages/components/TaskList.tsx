@@ -27,7 +27,7 @@ const tasks = [
     initials: "GA",
     team: "Operation",
     milestone: "Extract SO",
-    link: "/components/TaskDetails",
+    link: "/TaskDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -47,7 +47,7 @@ const tasks = [
     initials: "GA",
     team: "Operation",
     milestone: "Extract SO",
-    link: "/components/TaskDetails",
+    link: "/TaskDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -67,7 +67,7 @@ const tasks = [
     initials: "GA",
     team: "Operation",
     milestone: "Find shipment",
-    link: "/components/TaskDetails",
+    link: "/TaskDetails",
     assignees: [
       {
         name: "Lindsay Walton",
@@ -87,7 +87,7 @@ const tasks = [
     initials: "GA",
     team: "Operation",
     milestone: "Digitize SO",
-    link: "/components/TaskDetails",
+    link: "/TaskDetails",
     assignees: [
       {
         name: "Courtney Henry",
@@ -107,7 +107,7 @@ const tasks = [
     initials: "GA",
     team: "Operation",
     milestone: "Release SO",
-    link: "/components/TaskDetails",
+    link: "/TaskDetails",
     assignees: [
       {
         name: "Tom Cook",
@@ -127,7 +127,7 @@ const tasks = [
     initials: "GA",
     team: "Operation",
     milestone: "Release SO",
-    link: "/components/TaskDetails",
+    link: "/TaskDetails",
     assignees: [
       {
         name: "Dries Vincent",
@@ -460,7 +460,7 @@ export default function TaskList() {
                             aria-hidden="true"
                           />
                           <Link
-                            href="/components/TaskDetails"
+                            href="/TaskDetails"
                             underline="none"
                             className="font-medium text-gray-900 hover:text-gray-600"
                           >
