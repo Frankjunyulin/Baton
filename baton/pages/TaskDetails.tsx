@@ -1,5 +1,4 @@
 import {Fragment, useState} from "react";
-import {Dialog, Transition} from "@headlessui/react";
 import TransitionBar from "./components/TransitionBar";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Link from "next/link";
@@ -11,15 +10,12 @@ import {
   ClockIcon,
   HomeIcon,
   UserCircleIcon as UserCircleIconOutline,
-  XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
-  BellIcon,
   CalendarIcon,
   ChatBubbleLeftEllipsisIcon,
   CheckCircleIcon,
   LockOpenIcon,
-  MagnifyingGlassIcon,
   PencilIcon,
   TagIcon,
   UserCircleIcon as UserCircleIconMini,

@@ -1,6 +1,4 @@
-import React, { useRef, type ReactNode } from 'react';
-import Image from 'next/image';
-import logo from 'assets/logo.svg';
+import React, { type ReactNode } from 'react';
 
 type Props = {
   children?: ReactNode;

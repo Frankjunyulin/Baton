@@ -1,36 +1,6 @@
-import {Fragment, useState} from "react";
-import {Dialog, Menu, Transition} from "@headlessui/react";
-import {
-  ArchiveBoxIcon,
-  Bars3BottomLeftIcon,
-  Bars4Icon,
-  ClockIcon,
-  HomeIcon,
-  UserCircleIcon as UserCircleIconOutline,
-  XMarkIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
-import {
-  BellIcon,
-  CalendarIcon,
-  ChatBubbleLeftEllipsisIcon,
-  CheckCircleIcon,
-  LockOpenIcon,
-  MagnifyingGlassIcon,
-  PencilIcon,
-  TagIcon,
-  FolderIcon,
-  BookOpenIcon,
-  UserCircleIcon as UserCircleIconMini,
-} from "@heroicons/react/20/solid";
-import ReactFlow, {
-  MiniMap,
-  Controls,
-  Background,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-} from "reactflow";
+import {useState} from "react";
+import {Bars3BottomLeftIcon} from "@heroicons/react/24/outline";
+import {BellIcon, PencilIcon} from "@heroicons/react/20/solid";
 
 import Breadcrumbs from "./components/Breadcrumbs";
 // import ProcedureFlow from "./ProcedureFlow";

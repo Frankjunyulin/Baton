@@ -2,23 +2,8 @@ import {Fragment, useState} from "react";
 import {Dialog, Menu, Transition} from "@headlessui/react";
 // import Link from "next/link";
 import {Link} from "@mui/material";
-import {
-  Bars3CenterLeftIcon,
-  Bars4Icon,
-  ClockIcon,
-  HomeIcon,
-  XMarkIcon,
-  FolderIcon,
-  BookOpenIcon,
-  CalendarIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ChevronRightIcon,
-  ChevronUpDownIcon,
-  EllipsisVerticalIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
-import TransitionBar from "./TransitionBar";
+import {Bars3CenterLeftIcon} from "@heroicons/react/24/outline";
+import {ChevronRightIcon, MagnifyingGlassIcon} from "@heroicons/react/20/solid";
 
 const tasks = [
   {

@@ -2,20 +2,13 @@ import {Fragment} from "react";
 import {useRouter} from "next/router";
 import {Dialog, Menu, Transition} from "@headlessui/react";
 import {
-  Bars3CenterLeftIcon,
-  Bars4Icon,
-  ClockIcon,
   ChartBarIcon,
   HomeIcon,
   XMarkIcon,
-  FolderIcon,
   BookOpenIcon,
-  CalendarIcon,
 } from "@heroicons/react/24/outline";
 import {
-  ChevronRightIcon,
   ChevronUpDownIcon,
-  EllipsisVerticalIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
 

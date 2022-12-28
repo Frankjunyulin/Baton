@@ -22,40 +22,14 @@
   }
   ```
 */
-import {Fragment, useState} from "react";
+import {useState} from "react";
 import {useRouter} from "next/router";
-import {Dialog, Menu, Transition} from "@headlessui/react";
-import {
-  ArchiveBoxIcon,
-  Bars3BottomLeftIcon,
-  Bars4Icon,
-  ClockIcon,
-  HomeIcon,
-  UserCircleIcon as UserCircleIconOutline,
-  XMarkIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
+import {Bars3BottomLeftIcon} from "@heroicons/react/24/outline";
 import {
   BellIcon,
-  CalendarIcon,
-  ChatBubbleLeftEllipsisIcon,
-  CheckCircleIcon,
-  LockOpenIcon,
-  MagnifyingGlassIcon,
   PencilIcon,
-  TagIcon,
-  FolderIcon,
-  BookOpenIcon,
   UserCircleIcon as UserCircleIconMini,
 } from "@heroicons/react/20/solid";
-import ReactFlow, {
-  MiniMap,
-  Controls,
-  Background,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-} from "reactflow";
 
 import Breadcrumbs from "./components/Breadcrumbs";
 import ProcedureFlow from "./components/ProcedureFlow";

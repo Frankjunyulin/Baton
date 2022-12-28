@@ -1,17 +1,6 @@
-import {Fragment, useState} from "react";
-import {Menu, Transition} from "@headlessui/react";
+import {useState} from "react";
 import InstanceCreate from "./InstanceCreate";
-import {
-  ArchiveBoxIcon,
-  ArrowRightCircleIcon,
-  ChevronDownIcon,
-  DocumentDuplicateIcon,
-  HeartIcon,
-  PencilSquareIcon,
-  TrashIcon,
-  UserPlusIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
+import {MagnifyingGlassIcon} from "@heroicons/react/20/solid";
 // import Link from "next/link";
 import {Link} from "@mui/material";
 

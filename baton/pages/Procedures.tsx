@@ -1,4 +1,4 @@
-import {Fragment, useState} from "react";
+import {useState} from "react";
 import TransitionBar from "./components/TransitionBar";
 import ProcedureList from "./components/ProcedureList";
 
