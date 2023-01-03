@@ -365,10 +365,10 @@ export default function TaskDetails() {
                                               </a>{" "}
                                               assigned{" "}
                                               <a
-                                                href={item.assigned.href}
+                                                href={item.assigned?.href}
                                                 className="font-medium text-gray-900"
                                               >
-                                                {item.assigned.name}
+                                                {item.assigned?.name}
                                               </a>{" "}
                                               <span className="whitespace-nowrap">
                                                 {item.date}

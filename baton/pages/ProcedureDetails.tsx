@@ -129,13 +129,6 @@ const breadTags = [
   {name: "Upload and digitize SO", current: true},
 ];
 
-const initialNodes = [
-  {id: "1", position: {x: 0, y: 0}, data: {label: "Input Node"}},
-  {id: "2", position: {x: 0, y: 100}, data: {label: "output Node"}},
-];
-
-const initialEdges = [{id: "e1-2", source: "1", target: "2"}];
-
 export default function ProcedureDetails() {
   const router = useRouter();
   console.log(router.query);
@@ -145,14 +138,6 @@ export default function ProcedureDetails() {
 
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
       {selectedStep && (
         <MilestoneSlideOver
           selectedStep={selectedStep}

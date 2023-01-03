@@ -13,6 +13,7 @@
   ```
 */
 import {Fragment, useState} from "react";
+import {useRouter} from "next/router";
 import {Menu, Transition} from "@headlessui/react";
 // import Link from "next/link";
 import {Link} from "@mui/material";
@@ -22,7 +23,6 @@ import {
   EllipsisVerticalIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
-import InstanceCreate from "./InstanceCreate";
 
 const procedures = [
   {
@@ -71,33 +71,13 @@ function classNames(...classes: string[]) {
 }
 
 export default function ProcedureList() {
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCreateModalOpen, setCreateModalOpen] = useState(false);
   const [procedureList, setProcedureList] = useState(procedures);
 
   return (
     <>
-      {isCreateModalOpen && (
-        <InstanceCreate
-          isCreateModalOpen={isCreateModalOpen}
-          setCreateModalOpen={setCreateModalOpen}
-          procedureList={procedureList}
-          setProcedureList={setProcedureList}
-        />
-      )}
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
-      {/*<div className="min-h-full">
-        <TransitionBar
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-    /> */}
       {/* Main column */}
       <div className="flex flex-col lg:pl-64">
         {/* Search header */}
@@ -288,7 +268,7 @@ export default function ProcedureList() {
                 type="button"
                 className="order-0 inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:order-1 sm:ml-3"
                 onClick={() => {
-                  setCreateModalOpen(true);
+                  router.push("/ProcedureCreate");
                 }}
               >
                 Create
