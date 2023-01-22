@@ -1,9 +1,7 @@
 import {useState} from "react";
-import {useRouter} from "next/router";
 import {Bars3BottomLeftIcon} from "@heroicons/react/24/outline";
-
+import {useRouter} from "next/router";
 import Breadcrumbs from "./components/Breadcrumbs";
-import ProcedureFlow from "./components/ProcedureFlow";
 import TransitionBar from "./components/TransitionBar";
 
 import dynamic from "next/dynamic";
@@ -58,7 +56,7 @@ type Props = {
   setProgressStep: (val: string) => void;
 };
 
-export default function MilestonesDependencyCreate({setProgressStep}: Props) {
+export default function ProcedureTasksCreate({setProgressStep}: Props) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedStep, setSelectedStep] = useState(null);
@@ -98,23 +96,76 @@ export default function MilestonesDependencyCreate({setProgressStep}: Props) {
               <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <form className="space-y-8 divide-y divide-gray-200">
                   <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-                    <div className="space-y-6 sm:space-y-5">
+                    <div className="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
                       <div>
                         <h3 className="text-3xl font-medium leading-6 text-gray-900">
-                          Milestones dependency
+                          Tasks of Milestone 1
                         </h3>
                         <p className="mt-4 max-w-2xl text-sm text-gray-500">
-                          This information will be displayed publicly so be
-                          careful what you share.
+                          Define tasks of your minestones.
                         </p>
                       </div>
-
                       <div className="space-y-6 sm:space-y-5">
-                        <div className="mt-16">
-                          <ProcedureFlow
-                            steps={tasks}
-                            setSelectedStep={setSelectedStep}
-                          />
+                        <div className="sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                          <h3 className="text-xl font-medium leading-6 text-gray-900">
+                            Task 1
+                          </h3>
+                          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+                            Use a permanent address where you can receive mail.
+                          </p>
+                        </div>
+                        <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                          <label
+                            htmlFor="m1-name"
+                            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                          >
+                            Name
+                          </label>
+                          <div className="mt-1 sm:col-span-2 sm:mt-0">
+                            <input
+                              type="text"
+                              name="m1-name"
+                              id="m1-name"
+                              autoComplete="given-name"
+                              className="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm"
+                            />
+                          </div>
+                        </div>
+                        <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                          <label
+                            htmlFor="m1-description"
+                            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                          >
+                            Description
+                          </label>
+                          <div className="mt-1 sm:col-span-2 sm:mt-0">
+                            <textarea
+                              id="m1-description"
+                              name="m1-description"
+                              rows={3}
+                              className="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                              defaultValue={""}
+                            />
+                            <p className="mt-2 text-sm text-gray-500">
+                              Write description about the milestone.
+                            </p>
+                          </div>
+                        </div>
+                        <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                          <label
+                            htmlFor="m1-name"
+                            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                          >
+                            Assignee
+                          </label>
+                          <div className="mt-1 sm:col-span-2 sm:mt-0">
+                            <input
+                              type="text"
+                              name="m1-assignee"
+                              id="m1-assignee"
+                              className="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -126,19 +177,19 @@ export default function MilestonesDependencyCreate({setProgressStep}: Props) {
                         type="button"
                         className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         onClick={() => {
-                          setProgressStep("ProcedureTasksCreate");
+                          setProgressStep("ProcedureInformationCreate");
                         }}
                       >
                         Back
                       </button>
                       <button
-                        type="submit"
+                        type="button"
                         className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         onClick={() => {
-                          router.push("/Procedures");
+                          setProgressStep("MilestonesDependencyCreate");
                         }}
                       >
-                        Save
+                        Next
                       </button>
                     </div>
                   </div>

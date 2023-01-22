@@ -442,6 +442,24 @@ export default function ProcedureList() {
                       className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                       scope="col"
                     >
+                      Category
+                    </th>
+                    <th
+                      className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      scope="col"
+                    >
+                      Instances
+                    </th>
+                    <th
+                      className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      scope="col"
+                    >
+                      Active
+                    </th>
+                    <th
+                      className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      scope="col"
+                    >
                       Assignees
                     </th>
                     <th
@@ -481,6 +499,15 @@ export default function ProcedureList() {
                             </span>
                           </Link>
                         </div>
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-3 text-left text-sm font-medium text-gray-500">
+                        Supply chain
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-3 text-right text-sm font-medium text-gray-500">
+                        8
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-3 text-right text-sm font-medium text-gray-500">
+                        Yes
                       </td>
                       <td className="px-6 py-3 text-sm font-medium text-gray-500">
                         <div className="flex items-center space-x-2">

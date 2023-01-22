@@ -412,10 +412,16 @@ export default function TaskList() {
                       className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
                       scope="col"
                     >
-                      Milestone
+                      Procedure instance
                     </th>
                     <th
                       className="border-b border-gray-200 bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
+                      scope="col"
+                    >
+                      Milestone
+                    </th>
+                    <th
+                      className="border-b border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-semibold text-gray-900"
                       scope="col"
                     >
                       Assignee
@@ -449,12 +455,7 @@ export default function TaskList() {
                             underline="none"
                             className="font-medium text-gray-900 hover:text-gray-600"
                           >
-                            <span>
-                              {task.title}{" "}
-                              <span className="font-normal text-gray-500">
-                                in {task.team}
-                              </span>
-                            </span>
+                            <span>{task.title}</span>
                           </Link>
                         </div>
                       </td>
@@ -468,6 +469,15 @@ export default function TaskList() {
                         </Link>
                       </td>
                       <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
+                        <Link
+                          href="/components/ProcedureDetails"
+                          underline="none"
+                          className="font-medium text-gray-900 hover:text-gray-600"
+                        >
+                          Upload and digitize SO - 13250
+                        </Link>
+                      </td>
+                      <td className="hidden whitespace-nowrap px-6 py-3 text-left text-sm text-gray-500 md:table-cell">
                         {task.milestone}
                       </td>
                       <td className="px-6 py-3 text-sm font-medium text-gray-500">
@@ -491,14 +501,6 @@ export default function TaskList() {
                       </td>
                       <td className="hidden whitespace-nowrap px-6 py-3 text-right text-sm text-gray-500 md:table-cell">
                         {task.lastUpdated}
-                      </td>
-                      <td className="whitespace-nowrap px-6 py-3 text-right text-sm font-medium">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Edit
-                        </a>
                       </td>
                     </tr>
                   ))}
